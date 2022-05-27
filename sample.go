@@ -14,4 +14,9 @@ type struct1 struct {
 
 type Struct2 struct {
 	f1 struct1
+	f2 []string
+	f3 [16]int
+	f4 []struct {
+		f4a uint64
+	}
 }
