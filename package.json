@@ -2,7 +2,7 @@
   "name": "golang-code-actions",
   "displayName": "Golang Code Actions",
   "description": "extra code actions for golang (generate getter)",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "publisher": "nate-scarlet",
   "engines": {
     "vscode": "^1.66.0"
