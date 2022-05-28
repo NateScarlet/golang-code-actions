@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import iterateSelectedToken from "./utils/iterateSelectedToken";
 
 export default class CodeActionProvider implements vscode.CodeActionProvider {
   public provideCodeActions(
@@ -7,23 +8,32 @@ export default class CodeActionProvider implements vscode.CodeActionProvider {
   ): vscode.CodeAction[] | undefined {
     const editor = vscode.window.activeTextEditor;
     if (!editor) {
-      return undefined;
+      return;
     }
 
-    // const line = document.lineAt(editor.selection.start.line);
-    // document.getText(editor.selection);
-    // if (!fnRegex.test(line.text)) {
-    //   return undefined;
-    // }
-    const action = new vscode.CodeAction(
+    const actions: vscode.CodeAction[] = [];
+
+    const action1 = new vscode.CodeAction(
       "Generate getter for un-exported fields",
       vscode.CodeActionKind.RefactorRewrite
     );
-    action.command = {
+    action1.command = {
       command: "golang-code-actions.generate-getter",
       title: "generate getter for un-exported fields",
     };
-    return [action];
+    actions.push(action1);
+
+    const action2 = new vscode.CodeAction(
+      "Generate constructor for struct",
+      vscode.CodeActionKind.RefactorRewrite
+    );
+    action2.command = {
+      command: "golang-code-actions.generate-constructor",
+      title: "generate constructor for struct",
+    };
+    actions.push(action2);
+
+    return actions;
   }
 
   register(): vscode.Disposable {

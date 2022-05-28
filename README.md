@@ -6,7 +6,9 @@
 
 [changelog](https://github.com/NateScarlet/golang-code-actions/blob/master/CHANGELOG.md)
 
+use `Ctrl+.` to trigger code actions.
+
 ![demo.gif](https://raw.githubusercontent.com/NateScarlet/golang-code-actions/master/demo.gif)
 
 - [x] generate getter
-- [ ] generate constructor
+- [x] generate constructor

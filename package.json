@@ -22,6 +22,10 @@
 			{
 				"command": "golang-code-actions.generate-getter",
 				"title": "Golang Code Action: generate getter for un-exported struct fields"
+			},
+			{
+				"command": "golang-code-actions.generate-constructor",
+				"title": "Golang Code Action: generate constructor for struct"
 			}
 		]
 	},

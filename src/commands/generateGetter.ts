@@ -7,7 +7,7 @@ import upperFirst from "../utils/upperFirst";
 export default async function generateGetter() {
   const editor = vscode.window.activeTextEditor;
   if (!editor) {
-    return undefined;
+    return;
   }
   const { document } = editor;
 

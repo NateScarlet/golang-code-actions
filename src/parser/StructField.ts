@@ -40,9 +40,9 @@ export default class StructField {
         if (!match2) {
           return;
         }
-        return struct.field(name, type + " " + match2[1]);
+        return struct.addField(name, type + " " + match2[1]);
       }
-      return struct.field(name, type);
+      return struct.addField(name, type);
     }
   }
 }

@@ -2,15 +2,23 @@ import StructField from "./StructField";
 
 export default class Struct {
   #name: string;
+  #fields: StructField[];
   constructor(name: string) {
     this.#name = name;
+    this.#fields = [];
   }
   get name() {
     return this.#name;
   }
 
-  field(name: string, type: string): StructField {
-    return new StructField(this, name, type);
+  get fields(): readonly StructField[] {
+    return this.#fields;
+  }
+
+  addField(name: string, type: string): StructField {
+    const v = new StructField(this, name, type);
+    this.#fields.push(v);
+    return v;
   }
 
   static formSource(line: string): Struct | undefined {
