@@ -128,7 +128,7 @@ function* iterateSource(editor: vscode.TextEditor): Iterable<string> {
   }
 }
 
-export default function generateGetter() {
+export default async function generateGetter() {
   const editor = vscode.window.activeTextEditor;
   if (!editor) {
     return undefined;
@@ -166,12 +166,11 @@ export default function generateGetter() {
   }
 
   if (fieldCount === 0) {
-    vscode.window.showInformationMessage(
+    await vscode.window.showInformationMessage(
       "no un-exported struct field detected in selection"
     );
     return;
   }
 
-  editor.insertSnippet(s, new vscode.Position(document.lineCount + 1, 0));
+  await editor.insertSnippet(s, new vscode.Position(document.lineCount + 1, 0));
 }
-

@@ -11,7 +11,7 @@
         {
           "source": "esbuild",
           "owner": "typescript",
-		  "fileLocation": "relative",
+          "fileLocation": "relative",
           "background": {
             "activeOnStart": true,
             "beginsPattern": {
@@ -39,6 +39,14 @@
       "group": {
         "kind": "build",
         "isDefault": true
+      }
+    },
+    {
+      "type": "npm",
+      "script": "test:build",
+      "problemMatcher": "$tsc",
+      "presentation": {
+        "reveal": "never"
       }
     }
   ]
