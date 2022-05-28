@@ -22,6 +22,9 @@ type Struct2 struct {
 }
 
 
-func (obj struct1) F2() int {
-	return obj.f2
+func (obj struct1) F3() struct {
+		f3a string
+		f3b uint64
+	} {
+	return obj.f3
 }

@@ -28,7 +28,7 @@ export default class StructField {
     return this.name[0] === this.name[0].toUpperCase();
   }
 
-  static parseLine(struct: Struct, source: string): StructField | undefined {
+  static fromSource(struct: Struct, source: string): StructField | undefined {
     const match = /^\s*([a-zA-Z]\S*)\s+((?:\[\d*\]|\*)*[a-zA-Z][^\s{]*)/.exec(
       source
     );

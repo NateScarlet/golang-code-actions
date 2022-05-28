@@ -1,63 +1,8 @@
 import * as vscode from "vscode";
-import Struct from "../parser/Struct";
 import StructField from "../parser/StructField";
-
-function* iterateStructFields(lines: Iterable<string>): Iterable<StructField> {
-  let struct: Struct | undefined;
-  let b = "";
-  for (const line of lines) {
-    const newStruct = Struct.parseLine(line);
-    if (newStruct) {
-      struct = newStruct;
-      b = "";
-      continue;
-    }
-    if (struct) {
-      b += line;
-      const field = StructField.parseLine(struct, b);
-      if (field) {
-        yield field;
-        b = "";
-      }
-    }
-  }
-}
-
-function upperFirst(s: string): string {
-  return s.slice(0, 1).toUpperCase() + s.slice(1);
-}
-
-function eolText(eol: vscode.EndOfLine): string {
-  switch (eol) {
-    case vscode.EndOfLine.CRLF:
-      return "\r\n";
-    case vscode.EndOfLine.LF:
-      return "\n";
-    default:
-      throw new Error(`unsupported eol: ${eol}`);
-  }
-}
-
-function* iterateSource(editor: vscode.TextEditor): Iterable<string> {
-  const { document } = editor;
-
-  let lineGte = editor.selection.start.line;
-  let lineLte = editor.selection.end.line;
-  if (lineLte === editor.document.lineCount) {
-    lineLte -= 1;
-  }
-  while (
-    lineGte > 0 &&
-    Struct.parseLine(document.lineAt(lineGte).text) == null
-  ) {
-    lineGte -= 1;
-  }
-  for (let lineNumber = lineGte; lineNumber <= lineLte; lineNumber += 1) {
-    const line = document.lineAt(lineNumber);
-    const v = line.text + eolText(document.eol);
-    yield v;
-  }
-}
+import eolText from "../utils/eolText";
+import iterateSelectedToken from "../utils/iterateSelectedToken";
+import upperFirst from "../utils/upperFirst";
 
 export default async function generateGetter() {
   const editor = vscode.window.activeTextEditor;
@@ -70,7 +15,10 @@ export default async function generateGetter() {
   const s = new vscode.SnippetString();
   const eol = eolText(document.eol);
   s.appendText(eol);
-  for (const i of iterateStructFields(iterateSource(editor))) {
+  for (const i of iterateSelectedToken(editor)) {
+    if (!(i instanceof StructField)) {
+      continue;
+    }
     if (i.isExported()) {
       continue;
     }
