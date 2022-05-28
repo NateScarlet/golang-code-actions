@@ -1,0 +1,46 @@
+name: test
+
+on: [push]
+
+jobs:
+  build:
+    name: ${{ matrix.os }} ${{ matrix.version }}
+    runs-on: ${{ matrix.os }}
+
+    # Not containing 'SKIP CI' in the commit message AND
+    # (Either the official repository, or the commit message contains 'FORCE RUN CI')
+    if: (github.repository == 'NateScarlet/golang-code-actions' || contains(github.event.head_commit.message, 'FORCE RUN CI')) && !contains(github.event.head_commit.message, 'SKIP CI')
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest] # TODO: reenable macos-latest
+        version: ["stable"]
+
+    steps:
+      - name: Clone repository
+        uses: actions/checkout@v3
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: "7"
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "14.x"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Compile
+        run: pnpm run vscode:prepublish
+
+      - name: Run tests
+        uses: GabrielBB/xvfb-action@86d97bde4a65fe9b290c0b3fb92c2c4ed0e5302d
+        with:
+          run: pnpm test
+        env:
+          CODE_VERSION: ${{ matrix.version }}
