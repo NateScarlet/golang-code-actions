@@ -19,12 +19,6 @@ module.exports = {
   compareUrlFormat: `${URL}/compare/{{previousTag}}...{{currentTag}}`,
   issueUrlFormat: `${URL}/issues/{{id}}`,
   userUrlFormat: `https://github.com//{{user}}`,
-  bumpFiles: [
-    // {
-    //   filename: "version",
-    //   type: "plain-text",
-    // },
-  ],
   scripts: {
     postchangelog: "bash ./scripts/postchangelog.sh",
   },
