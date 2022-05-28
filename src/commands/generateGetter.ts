@@ -110,18 +110,18 @@ function eolText(eol: vscode.EndOfLine): string {
 function* iterateSource(editor: vscode.TextEditor): Iterable<string> {
   const { document } = editor;
 
-  let startLine = editor.selection.start.line;
-  while (parseStruct(document.lineAt(startLine).text) == null) {
-    startLine -= 1;
-    if (startLine < 0) {
-      return;
-    }
+  let lineGte = editor.selection.start.line;
+  let lineLte = editor.selection.end.line;
+  if (lineLte === editor.document.lineCount) {
+    lineLte -= 1;
   }
-  for (
-    let lineNumber = startLine;
-    lineNumber <= editor.selection.end.line;
-    lineNumber += 1
+  while (
+    lineGte > 0 &&
+    parseStruct(document.lineAt(lineGte).text) == null
   ) {
+    lineGte -= 1;
+  }
+  for (let lineNumber = lineGte; lineNumber <= lineLte; lineNumber += 1) {
     const line = document.lineAt(lineNumber);
     const v = line.text + eolText(document.eol);
     yield v;
@@ -166,7 +166,7 @@ export default async function generateGetter() {
   }
 
   if (fieldCount === 0) {
-    await vscode.window.showInformationMessage(
+    vscode.window.showInformationMessage(
       "no un-exported struct field detected in selection"
     );
     return;
