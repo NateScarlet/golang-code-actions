@@ -1,4 +1,4 @@
-import { Position, Range, TextEditor } from "vscode";
+import { Range, TextEditor } from "vscode";
 import StreamParser from "../parser/StreamParser";
 import Token from "../parser/Token";
 import iterateTextLines from "./iterateTextLines";

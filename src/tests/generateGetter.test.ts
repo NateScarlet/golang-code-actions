@@ -58,4 +58,18 @@ suite("generateGetter", () => {
       ext: ".go",
     });
   });
+
+  test("should generate for multi selection", async () => {
+    const { document, editor } = await useTextDocument(
+      sampleFolder("generate_getter_1.go")
+    );
+    editor.selections = [
+      new vscode.Selection(5, 0, 5, 0),
+      new vscode.Selection(17, 0, 17, 0),
+    ];
+    await generateGetter();
+    await snapshot.match(document.getText(), {
+      ext: ".go",
+    });
+  });
 });
