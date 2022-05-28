@@ -39,7 +39,7 @@ jobs:
         run: pnpm run vscode:prepublish
 
       - name: Run tests
-        uses: GabrielBB/xvfb-action@86d97bde4a65fe9b290c0b3fb92c2c4ed0e5302d
+        uses: GabrielBB/xvfb-action@36f535812f1bd7e367d9fc8be6eb55502c47db26
         with:
           run: pnpm test
         env:
