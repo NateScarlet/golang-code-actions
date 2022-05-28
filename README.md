@@ -8,7 +8,7 @@
 
 use `Ctrl+.` to trigger code actions.
 
-![demo.gif](https://raw.githubusercontent.com/NateScarlet/golang-code-actions/master/demo.gif)
-
 - [x] generate getter
 - [x] generate constructor
+
+![demo.gif](https://raw.githubusercontent.com/NateScarlet/golang-code-actions/master/demo.gif)
