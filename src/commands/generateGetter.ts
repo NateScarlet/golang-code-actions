@@ -1,81 +1,12 @@
 import * as vscode from "vscode";
-
-class Struct {
-  #name: string;
-  constructor(name: string) {
-    this.#name = name;
-  }
-  get name() {
-    return this.#name;
-  }
-
-  field(name: string, type: string): StructField {
-    return new StructField(this, name, type);
-  }
-}
-
-class StructField {
-  #name: string;
-  #type: string;
-  #parent: Struct;
-  constructor(parent: Struct, name: string, type: string) {
-    this.#name = name;
-    this.#type = type;
-    this.#parent = parent;
-  }
-  get name() {
-    return this.#name;
-  }
-
-  get type() {
-    return this.#type;
-  }
-
-  get parent() {
-    return this.#parent;
-  }
-
-  isExported() {
-    if (!this.#name) {
-      return false;
-    }
-    return this.name[0] === this.name[0].toUpperCase();
-  }
-}
-
-function parseStruct(line: string): Struct | undefined {
-  const match = /^type\s+([a-zA-Z]\S*)\s+struct\s*{/.exec(line);
-  if (match) {
-    return new Struct(match[1]);
-  }
-}
-
-function parseStructField(
-  struct: Struct,
-  source: string
-): StructField | undefined {
-  const match = /^\s*([a-zA-Z]\S*)\s+((?:\[\d*\]|\*)*[a-zA-Z][^\s{]*)/.exec(
-    source
-  );
-  if (match) {
-    const name = match[1];
-    const type = match[2];
-    if (/^(?:\[\d*\]|\*)*(struct|interface)$/.test(type)) {
-      const match2 = /^\s*({.+})/s.exec(source.slice(match[0].length));
-      if (!match2) {
-        return;
-      }
-      return struct.field(name, type + " " + match2[1]);
-    }
-    return struct.field(name, type);
-  }
-}
+import Struct from "../parser/Struct";
+import StructField from "../parser/StructField";
 
 function* iterateStructFields(lines: Iterable<string>): Iterable<StructField> {
   let struct: Struct | undefined;
   let b = "";
   for (const line of lines) {
-    const newStruct = parseStruct(line);
+    const newStruct = Struct.parseLine(line);
     if (newStruct) {
       struct = newStruct;
       b = "";
@@ -83,7 +14,7 @@ function* iterateStructFields(lines: Iterable<string>): Iterable<StructField> {
     }
     if (struct) {
       b += line;
-      const field = parseStructField(struct, b);
+      const field = StructField.parseLine(struct, b);
       if (field) {
         yield field;
         b = "";
@@ -117,7 +48,7 @@ function* iterateSource(editor: vscode.TextEditor): Iterable<string> {
   }
   while (
     lineGte > 0 &&
-    parseStruct(document.lineAt(lineGte).text) == null
+    Struct.parseLine(document.lineAt(lineGte).text) == null
   ) {
     lineGte -= 1;
   }
