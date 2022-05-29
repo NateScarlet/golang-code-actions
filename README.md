@@ -10,8 +10,10 @@ use `Ctrl+.` to trigger code actions.
 
 - [x] generate getter
 - [x] generate constructor
-- [ ] generate option
-  - [ ] reuse type declaration
-  - [ ] reuse type alias
+- [x] generate option
+  - [x] reuse type declaration
+  - [x] reuse type alias
+  - [x] indirect pointer
+  - [x] use variadic function for slice
 
 ![demo.gif](https://raw.githubusercontent.com/NateScarlet/golang-code-actions/master/demo.gif)

@@ -29,6 +29,16 @@ export default class CodeActionProvider implements vscode.CodeActionProvider {
     };
     actions.push(action2);
 
+    const action3 = new vscode.CodeAction(
+      "Generate option for struct field",
+      vscode.CodeActionKind.RefactorRewrite
+    );
+    action3.command = {
+      command: "golang-code-actions.generate-option",
+      title: "generate option for struct field",
+    };
+    actions.push(action3);
+
     return actions;
   }
 
