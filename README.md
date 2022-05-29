@@ -9,11 +9,18 @@
 use `Ctrl+.` to trigger code actions.
 
 - [x] generate getter
+
+  ![demo_getter.gif](https://raw.githubusercontent.com/NateScarlet/golang-code-actions/master/img/demo_getter.gif)
+
 - [x] generate constructor
+
+  ![demo_constructor.gif](https://raw.githubusercontent.com/NateScarlet/golang-code-actions/master/img/demo_constructor.gif)
+
 - [x] generate option
+
+  ![demo_option.gif](https://raw.githubusercontent.com/NateScarlet/golang-code-actions/master/img/demo_option.gif)
+
   - [x] reuse type declaration
   - [x] reuse type alias
   - [x] indirect pointer
   - [x] use variadic function for slice
-
-![demo.gif](https://raw.githubusercontent.com/NateScarlet/golang-code-actions/master/demo.gif)
