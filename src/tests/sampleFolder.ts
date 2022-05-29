@@ -1,4 +1,4 @@
-import path = require("path");
+import * as path from "path";
 import workspaceFolder from "./workspaceFolder";
 
 const root = workspaceFolder("src", "tests", "samples");

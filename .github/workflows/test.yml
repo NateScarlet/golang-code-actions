@@ -6,17 +6,12 @@ jobs:
   build:
     name: ${{ matrix.os }} ${{ matrix.version }}
     runs-on: ${{ matrix.os }}
-
-    # Not containing 'SKIP CI' in the commit message AND
-    # (Either the official repository, or the commit message contains 'FORCE RUN CI')
-    if: (github.repository == 'NateScarlet/golang-code-actions' || contains(github.event.head_commit.message, 'FORCE RUN CI')) && !contains(github.event.head_commit.message, 'SKIP CI')
     timeout-minutes: 20
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, windows-latest] # TODO: reenable macos-latest
         version: ["stable"]
-
     steps:
       - name: Clone repository
         uses: actions/checkout@v3
@@ -44,3 +39,7 @@ jobs:
           run: pnpm test
         env:
           CODE_VERSION: ${{ matrix.version }}
+
+      - name: Lint check
+        run: pnpm run lint
+        if: ${{ matrix.os == 'ubuntu-latest' && matrix.version == 'stable' }}

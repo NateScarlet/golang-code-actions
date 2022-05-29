@@ -2,6 +2,7 @@ import * as path from "path";
 
 import { runTests } from "@vscode/test-electron";
 import * as dotenv from "dotenv";
+
 async function main() {
   dotenv.config();
   try {

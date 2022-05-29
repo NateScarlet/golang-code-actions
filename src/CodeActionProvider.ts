@@ -1,11 +1,7 @@
 import * as vscode from "vscode";
-import iterateSelectedToken from "./utils/iterateSelectedToken";
 
 export default class CodeActionProvider implements vscode.CodeActionProvider {
-  public provideCodeActions(
-    document: vscode.TextDocument,
-    range: vscode.Range
-  ): vscode.CodeAction[] | undefined {
+  public provideCodeActions(): vscode.CodeAction[] | undefined {
     const editor = vscode.window.activeTextEditor;
     if (!editor) {
       return;

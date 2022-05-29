@@ -1,11 +1,14 @@
 import Struct from "./Struct";
 import StructField from "./StructField";
-import Token from "./Token";
+import type Token from "./Token";
 
 export default class StreamParser {
   #b: string;
+
   #eol: string;
+
   #parent: Struct | undefined;
+
   constructor({ eol = "\n" }: { eol?: string } = {}) {
     this.#b = "";
     this.#eol = eol;
@@ -31,9 +34,9 @@ export default class StreamParser {
   }
 
   *parse(source: string): Iterable<Token> {
-    source = this.#b + source;
+    const b = this.#b + source;
     this.#b = "";
-    for (const line of source.split(this.#eol)) {
+    for (const line of b.split(this.#eol)) {
       for (const token of this.parseLine(line)) {
         yield token;
       }

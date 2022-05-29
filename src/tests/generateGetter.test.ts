@@ -1,5 +1,4 @@
 import snapshot from "@nates/snapshot";
-import * as assert from "assert";
 
 import * as vscode from "vscode";
 import generateGetter from "../commands/generateGetter";

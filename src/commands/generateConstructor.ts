@@ -13,7 +13,6 @@ export default async function generateConstructor() {
   }
   const { document } = editor;
 
-  let fieldCount = 0;
   const s = new vscode.SnippetString();
   const eol = eolText(document.eol);
   s.appendText(eol);
@@ -34,7 +33,7 @@ export default async function generateConstructor() {
   structs.forEach((i) => {
     s.appendText(eol);
     s.appendText("func ");
-    s.appendPlaceholder("New" + upperFirst(i.name));
+    s.appendPlaceholder(`New${upperFirst(i.name)}`);
     s.appendText("(");
     if (i.fields.length > 0) {
       s.appendText(eol);

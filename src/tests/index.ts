@@ -4,6 +4,7 @@ import * as glob from "glob";
 import snapshot from "@nates/snapshot";
 import workspaceFolder from "./workspaceFolder";
 
+// eslint-disable-next-line import/prefer-default-export
 export function run(): Promise<void> {
   const testsRoot = path.resolve(__dirname);
   // Create the mocha test
@@ -12,7 +13,7 @@ export function run(): Promise<void> {
     color: true,
     rootHooks: {
       beforeEach: [
-        function (this: Mocha.Context) {
+        function setupSnapshot(this: Mocha.Context) {
           snapshot.currentTest.file = path.resolve(
             workspaceFolder("src"),
             path.relative(workspaceFolder("out"), this.currentTest?.file ?? "")
