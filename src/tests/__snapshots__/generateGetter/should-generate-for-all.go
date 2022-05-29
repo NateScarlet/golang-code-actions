@@ -21,7 +21,6 @@ type Struct2 struct {
 	}
 }
 
-
 func (obj struct1) F1() string {
 	return obj.f1
 }
@@ -60,3 +59,4 @@ func (obj Struct2) F4() []struct {
 	} {
 	return obj.f4
 }
+

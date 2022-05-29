@@ -23,7 +23,6 @@ export default async function generateGetter() {
       continue;
     }
     fieldCount += 1;
-    s.appendText(eol);
     s.appendText("func (");
     s.appendPlaceholder("obj", 1);
     s.appendText(" ");
@@ -41,6 +40,7 @@ export default async function generateGetter() {
     s.appendText(i.name);
     s.appendText(eol);
     s.appendText("}");
+    s.appendText(eol);
     s.appendText(eol);
   }
 

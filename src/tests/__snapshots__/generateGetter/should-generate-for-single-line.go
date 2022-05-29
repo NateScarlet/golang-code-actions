@@ -21,7 +21,7 @@ type Struct2 struct {
 	}
 }
 
-
 func (obj struct1) F2() int {
 	return obj.f2
 }
+

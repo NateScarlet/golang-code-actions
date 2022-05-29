@@ -22,7 +22,6 @@ type Struct2 struct {
 	}
 }
 
-
 func NewStruct1(
 	f1 string,
 	f2 int,
@@ -44,3 +43,4 @@ func NewStruct1(
 	}
 	return
 }
+

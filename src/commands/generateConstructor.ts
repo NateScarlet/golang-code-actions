@@ -31,7 +31,6 @@ export default async function generateConstructor() {
   }
 
   structs.forEach((i) => {
-    s.appendText(eol);
     s.appendText("func ");
     s.appendPlaceholder(`New${upperFirst(i.name)}`);
     s.appendText("(");
@@ -69,6 +68,7 @@ export default async function generateConstructor() {
     s.appendText("    return");
     s.appendText(eol);
     s.appendText("}");
+    s.appendText(eol);
     s.appendText(eol);
   });
 
