@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.0.6](https://github.com/NateScarlet/golang-code-actions/compare/v0.0.4...v0.0.6) (2022-05-29)
+
+### Features
+
+- support constructor generation ([c855636](https://github.com/NateScarlet/golang-code-actions/commit/c8556367377f2204c532faf797c6bbba65c736d7))
+- support option generation ([3d6be09](https://github.com/NateScarlet/golang-code-actions/commit/3d6be09c23d62b6ece302749edf5f9220c8b53ba))
+
 ## [0.0.5](https://github.com/NateScarlet/golang-code-actions/compare/v0.0.4...v0.0.5) (2022-05-28)
 
 ### Features
