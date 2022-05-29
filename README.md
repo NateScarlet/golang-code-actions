@@ -10,5 +10,8 @@ use `Ctrl+.` to trigger code actions.
 
 - [x] generate getter
 - [x] generate constructor
+- [ ] generate option
+  - [ ] reuse type declaration
+  - [ ] reuse type alias
 
 ![demo.gif](https://raw.githubusercontent.com/NateScarlet/golang-code-actions/master/demo.gif)
