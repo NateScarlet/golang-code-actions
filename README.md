@@ -24,3 +24,4 @@ use `Ctrl+.` to trigger code actions.
   - [x] reuse type alias
   - [x] indirect pointer
   - [x] use variadic function for slice
+  - [x] default name to `{struct}Option`, but replace `OptionsOption` with `Option`

@@ -1,9 +1,14 @@
 import * as vscode from "vscode";
+import type Struct from "../parser/Struct";
 import StructField from "../parser/StructField";
 import eolText from "../utils/eolText";
 import iterateSelectedToken from "../utils/iterateSelectedToken";
 import iterateTextLines from "../utils/iterateTextLines";
 import upperFirst from "../utils/upperFirst";
+
+function defaultOptionTypeName(struct: Struct): string {
+  return `${upperFirst(struct.name)}Option`.replace(/OptionsOption$/, "Option");
+}
 
 export default async function generateOption() {
   const editor = vscode.window.activeTextEditor;
@@ -42,7 +47,7 @@ export default async function generateOption() {
     fieldCount += 1;
     let optionTypeName = optionTypeNames.get(i.parent.name);
     if (!optionTypeName) {
-      optionTypeName = `${upperFirst(i.parent.name)}Option`;
+      optionTypeName = defaultOptionTypeName(i.parent);
       optionTypeNames.set(i.parent.name, optionTypeName);
       s.appendText("type ");
       s.appendPlaceholder(optionTypeName, structCount);

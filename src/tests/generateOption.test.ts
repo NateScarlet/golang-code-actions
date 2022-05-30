@@ -77,7 +77,7 @@ suite("generateOption", () => {
     const { document, editor } = await useTextDocument(
       sampleFolder("generate_option_1.go")
     );
-    editor.selections = [new vscode.Selection(16, 0, 16, 0)];
+    editor.selection = new vscode.Selection(0, 0, document.lineCount, 0);
     await generateOption();
     await snapshot.match(document.getText(), {
       ext: ".go",
@@ -134,6 +134,17 @@ suite("generateOption", () => {
   test("should generate when field commented", async () => {
     const { document, editor } = await useTextDocument(
       sampleFolder("generate_option_5.go")
+    );
+    editor.selections = [new vscode.Selection(4, 0, 4, 0)];
+    await generateOption();
+    await snapshot.match(document.getText(), {
+      ext: ".go",
+    });
+  });
+
+  test("should avoid OptionsOption as default type name", async () => {
+    const { document, editor } = await useTextDocument(
+      sampleFolder("generate_option_6.go")
     );
     editor.selections = [new vscode.Selection(4, 0, 4, 0)];
     await generateOption();
