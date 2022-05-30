@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.0.8](https://github.com/NateScarlet/golang-code-actions/compare/v0.0.7...v0.0.8) (2022-05-30)
+
+### Bug Fixes
+
+- selection mismatch ([4db379a](https://github.com/NateScarlet/golang-code-actions/commit/4db379a1cf32d1431d90aef0bce29354976aca19))
+
 ## [0.0.7](https://github.com/NateScarlet/golang-code-actions/compare/v0.0.6...v0.0.7) (2022-05-29)
 
 ## [0.0.6](https://github.com/NateScarlet/golang-code-actions/compare/v0.0.4...v0.0.6) (2022-05-29)
