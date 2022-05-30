@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.0.9](https://github.com/NateScarlet/golang-code-actions/compare/v0.0.8...v0.0.9) (2022-05-30)
+
+### Bug Fixes
+
+- should not generate for not selected line ([1493d02](https://github.com/NateScarlet/golang-code-actions/commit/1493d0241242488e5a858dbb84e5483dae18d484))
+
 ## [0.0.8](https://github.com/NateScarlet/golang-code-actions/compare/v0.0.7...v0.0.8) (2022-05-30)
 
 ### Bug Fixes
