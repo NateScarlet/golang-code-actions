@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.0.11](https://github.com/NateScarlet/golang-code-actions/compare/v0.0.10...v0.0.11) (2022-05-30)
+
+### Features
+
+- avoid OptionsOption as generated type name ([ec5faa1](https://github.com/NateScarlet/golang-code-actions/commit/ec5faa14fe1c3cb4f614d460d597706ad7ec8912))
+
+### Bug Fixes
+
+- should generate for embeded field ([5e32b22](https://github.com/NateScarlet/golang-code-actions/commit/5e32b2277742818d6d4ea401912a3227a9b57b84))
+- should generate for inline field ([14818c1](https://github.com/NateScarlet/golang-code-actions/commit/14818c1faa70f08f7e104cba12f1fb1a55292bed))
+
 ## [0.0.10](https://github.com/NateScarlet/golang-code-actions/compare/v0.0.9...v0.0.10) (2022-05-30)
 
 ### Bug Fixes
