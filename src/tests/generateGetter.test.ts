@@ -71,4 +71,15 @@ suite("generateGetter", () => {
       ext: ".go",
     });
   });
+
+  test("should generate when field commented", async () => {
+    const { document, editor } = await useTextDocument(
+      sampleFolder("generate_getter_2.go")
+    );
+    editor.selections = [new vscode.Selection(4, 0, 4, 0)];
+    await generateGetter();
+    await snapshot.match(document.getText(), {
+      ext: ".go",
+    });
+  });
 });

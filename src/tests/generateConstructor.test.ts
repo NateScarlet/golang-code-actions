@@ -42,4 +42,15 @@ suite("generateConstructor", () => {
       ext: ".go",
     });
   });
+
+  test("should generate when field commented", async () => {
+    const { document, editor } = await useTextDocument(
+      sampleFolder("generate_constructor_2.go")
+    );
+    editor.selections = [new vscode.Selection(4, 0, 4, 0)];
+    await generateConstructor();
+    await snapshot.match(document.getText(), {
+      ext: ".go",
+    });
+  });
 });

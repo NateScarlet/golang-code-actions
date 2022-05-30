@@ -1,3 +1,4 @@
+import Comment from "./Comment";
 import Struct from "./Struct";
 import StructField from "./StructField";
 import type Token from "./Token";
@@ -20,6 +21,11 @@ export default class StreamParser {
       this.#parent = newStruct;
       this.#b = "";
       yield newStruct;
+      return;
+    }
+    const comment = Comment.fromSource(line);
+    if (comment) {
+      yield comment;
       return;
     }
     this.#b += line;

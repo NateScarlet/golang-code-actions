@@ -130,4 +130,15 @@ suite("generateOption", () => {
       ext: ".go",
     });
   });
+
+  test("should generate when field commented", async () => {
+    const { document, editor } = await useTextDocument(
+      sampleFolder("generate_option_5.go")
+    );
+    editor.selections = [new vscode.Selection(4, 0, 4, 0)];
+    await generateOption();
+    await snapshot.match(document.getText(), {
+      ext: ".go",
+    });
+  });
 });
