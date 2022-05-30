@@ -26,12 +26,11 @@ export default class StructField {
   }
 
   static fromSource(struct: Struct, source: string): StructField | undefined {
-    const match = /^\s*([a-zA-Z]\S*)\s+((?:\[\d*\]|\*)*[a-zA-Z][^\s{]*)/.exec(
-      source
-    );
+    const match =
+      /^\s*((?:[a-zA-Z]\S*,? )*)\s*((?:\[\d*\]|\*)*[a-zA-Z]\S*)/.exec(source);
     if (match) {
-      const name = match[1];
       const type = match[2];
+      const name = match[1].trim() || type;
       if (/^(?:\[\d*\]|\*)*(struct|interface)$/.test(type)) {
         const match2 = /^\s*({.+})/s.exec(source.slice(match[0].length));
         if (!match2) {

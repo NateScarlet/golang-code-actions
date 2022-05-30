@@ -152,4 +152,15 @@ suite("generateOption", () => {
       ext: ".go",
     });
   });
+
+  test("should generate for embedded field", async () => {
+    const { document, editor } = await useTextDocument(
+      sampleFolder("generate_option_7.go")
+    );
+    editor.selections = [new vscode.Selection(8, 0, 8, 0)];
+    await generateOption();
+    await snapshot.match(document.getText(), {
+      ext: ".go",
+    });
+  });
 });

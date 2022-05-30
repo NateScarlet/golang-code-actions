@@ -53,4 +53,15 @@ suite("generateConstructor", () => {
       ext: ".go",
     });
   });
+
+  test("should generate for embedded field", async () => {
+    const { document, editor } = await useTextDocument(
+      sampleFolder("generate_constructor_3.go")
+    );
+    editor.selections = [new vscode.Selection(8, 0, 8, 0)];
+    await generateConstructor();
+    await snapshot.match(document.getText(), {
+      ext: ".go",
+    });
+  });
 });
