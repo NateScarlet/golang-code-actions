@@ -17,6 +17,21 @@ suite("generateOption", () => {
       ext: ".go",
     });
   });
+
+  test("should not generate for next line", async () => {
+    const { document, editor } = await useTextDocument(
+      sampleFolder("generate_option_1.go")
+    );
+    editor.selection = new vscode.Selection(
+      document.lineAt(3).range.start,
+      document.lineAt(4).range.end
+    );
+    await generateOption();
+    await snapshot.match(document.getText(), {
+      ext: ".go",
+    });
+  });
+
   test("should generate for multi line start", async () => {
     const { document, editor } = await useTextDocument(
       sampleFolder("generate_option_1.go")

@@ -1,5 +1,5 @@
-import { TextEditor } from "vscode";
 import { Range } from "vscode";
+import type { TextEditor } from "vscode";
 import StreamParser from "../parser/StreamParser";
 import type Token from "../parser/Token";
 import iterateTextLines from "./iterateTextLines";
@@ -16,7 +16,15 @@ export default function* iterateSelectedToken(
     for (const token of parser.parseLine(line.text)) {
       tokenCount += 1;
       const range1 = range;
-      if (editor.selections.some((s) => s.intersection(range1))) {
+      if (
+        editor.selections.some((s) => {
+          const selected = s.intersection(range1);
+          if (!s.isEmpty && selected?.isEmpty) {
+            return false;
+          }
+          return selected != null;
+        })
+      ) {
         yield token;
       }
     }
