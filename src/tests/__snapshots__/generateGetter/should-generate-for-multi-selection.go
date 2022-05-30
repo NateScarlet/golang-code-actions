@@ -21,11 +21,11 @@ type Struct2 struct {
 	}
 }
 
-func (obj struct1) F2() int {
-	return obj.f2
+func (obj struct1) F1() string {
+	return obj.f1
 }
 
-func (obj Struct2) F2() []string {
-	return obj.f2
+func (obj Struct2) F1() struct1 {
+	return obj.f1
 }
 

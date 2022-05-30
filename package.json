@@ -39,7 +39,7 @@
     "lint": "eslint src --ext ts",
     "pretest": "npm run build && npm run lint",
     "test:build": "rimraf out && tsc -p ./",
-    "test": "pnpm run test:build && node ./out/tests/runTest.js",
+    "test": "npm run test:build && node ./out/tests/runTest.js",
     "vscode:prepublish": "npm run build-base -- --minify",
     "build-base": "rimraf out && esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
     "build": "npm run build-base -- --sourcemap",

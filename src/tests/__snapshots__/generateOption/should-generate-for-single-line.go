@@ -26,9 +26,9 @@ type MyStruct2Option = func(*Struct2)
 
 type Struct1Option = func(opts *struct1)
 
-func Struct1OptionF2(v int) Struct1Option {
+func Struct1OptionF1(v string) Struct1Option {
 	return func(opts *struct1) {
-		opts.f2 = v
+		opts.f1 = v
 	}
 }
 

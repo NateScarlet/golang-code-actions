@@ -22,6 +22,8 @@ export default class StreamParser {
       yield newStruct;
       return;
     }
+    this.#b += line;
+    this.#b += this.#eol;
     if (this.#parent) {
       const field = StructField.fromSource(this.#parent, this.#b);
       if (field) {
@@ -29,8 +31,6 @@ export default class StreamParser {
         this.#b = "";
       }
     }
-    this.#b += line;
-    this.#b += this.#eol;
   }
 
   *parse(source: string): Iterable<Token> {

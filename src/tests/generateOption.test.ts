@@ -11,7 +11,7 @@ suite("generateOption", () => {
     const { document, editor } = await useTextDocument(
       sampleFolder("generate_option_1.go")
     );
-    editor.selection = new vscode.Selection(5, 0, 5, 0);
+    editor.selection = new vscode.Selection(3, 0, 3, 0);
     await generateOption();
     await snapshot.match(document.getText(), {
       ext: ".go",
@@ -21,7 +21,7 @@ suite("generateOption", () => {
     const { document, editor } = await useTextDocument(
       sampleFolder("generate_option_1.go")
     );
-    editor.selection = new vscode.Selection(6, 0, 6, 0);
+    editor.selection = new vscode.Selection(5, 0, 5, 0);
     await generateOption();
     await snapshot.match(document.getText(), {
       ext: ".go",
@@ -31,7 +31,7 @@ suite("generateOption", () => {
     const { document, editor } = await useTextDocument(
       sampleFolder("generate_option_1.go")
     );
-    editor.selection = new vscode.Selection(7, 0, 7, 0);
+    editor.selection = new vscode.Selection(6, 0, 6, 0);
     await generateOption();
     await snapshot.match(document.getText(), {
       ext: ".go",
@@ -41,7 +41,7 @@ suite("generateOption", () => {
     const { document, editor } = await useTextDocument(
       sampleFolder("generate_option_1.go")
     );
-    editor.selection = new vscode.Selection(9, 0, 9, 0);
+    editor.selection = new vscode.Selection(8, 0, 8, 0);
     await generateOption();
     await snapshot.match(document.getText(), {
       ext: ".go",
@@ -62,7 +62,7 @@ suite("generateOption", () => {
     const { document, editor } = await useTextDocument(
       sampleFolder("generate_option_1.go")
     );
-    editor.selections = [new vscode.Selection(17, 0, 17, 0)];
+    editor.selections = [new vscode.Selection(16, 0, 16, 0)];
     await generateOption();
     await snapshot.match(document.getText(), {
       ext: ".go",
@@ -73,7 +73,7 @@ suite("generateOption", () => {
     const { document, editor } = await useTextDocument(
       sampleFolder("generate_option_2.go")
     );
-    editor.selections = [new vscode.Selection(4, 0, 4, 0)];
+    editor.selections = [new vscode.Selection(3, 0, 3, 0)];
     await generateOption();
     await snapshot.match(document.getText(), {
       ext: ".go",
@@ -85,8 +85,8 @@ suite("generateOption", () => {
       sampleFolder("generate_option_1.go")
     );
     editor.selections = [
-      new vscode.Selection(5, 0, 5, 0),
-      new vscode.Selection(17, 0, 17, 0),
+      new vscode.Selection(4, 0, 4, 0),
+      new vscode.Selection(16, 0, 16, 0),
     ];
     await generateOption();
     await snapshot.match(document.getText(), {
@@ -98,7 +98,7 @@ suite("generateOption", () => {
     const { document, editor } = await useTextDocument(
       sampleFolder("generate_option_3.go")
     );
-    editor.selections = [new vscode.Selection(4, 0, 4, 0)];
+    editor.selections = [new vscode.Selection(3, 0, 3, 0)];
     await generateOption();
     await snapshot.match(document.getText(), {
       ext: ".go",
@@ -109,7 +109,7 @@ suite("generateOption", () => {
     const { document, editor } = await useTextDocument(
       sampleFolder("generate_option_4.go")
     );
-    editor.selections = [new vscode.Selection(4, 0, 4, 0)];
+    editor.selections = [new vscode.Selection(3, 0, 3, 0)];
     await generateOption();
     await snapshot.match(document.getText(), {
       ext: ".go",
