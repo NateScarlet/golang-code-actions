@@ -94,15 +94,14 @@ suite("generateGetter", () => {
     });
   });
 
-  // TODO
-  // test("should generate for inline field", async () => {
-  //   const { document, editor } = await useTextDocument(
-  //     sampleFolder("generate_getter_4.go")
-  //   );
-  //   editor.selections = [new vscode.Selection(3, 0, 3, 0)];
-  //   await generateGetter();
-  //   await snapshot.match(document.getText(), {
-  //     ext: ".go",
-  //   });
-  // });
+  test("should generate for inline field", async () => {
+    const { document, editor } = await useTextDocument(
+      sampleFolder("generate_getter_4.go")
+    );
+    editor.selections = [new vscode.Selection(3, 0, 3, 0)];
+    await generateGetter();
+    await snapshot.match(document.getText(), {
+      ext: ".go",
+    });
+  });
 });

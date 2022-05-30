@@ -163,4 +163,15 @@ suite("generateOption", () => {
       ext: ".go",
     });
   });
+
+  test("should generate for inline field", async () => {
+    const { document, editor } = await useTextDocument(
+      sampleFolder("generate_option_8.go")
+    );
+    editor.selections = [new vscode.Selection(3, 0, 3, 0)];
+    await generateOption();
+    await snapshot.match(document.getText(), {
+      ext: ".go",
+    });
+  });
 });

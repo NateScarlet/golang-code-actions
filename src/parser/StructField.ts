@@ -25,20 +25,23 @@ export default class StructField {
     return this.#parent;
   }
 
-  static fromSource(struct: Struct, source: string): StructField | undefined {
+  static *fromSource(struct: Struct, source: string): Iterable<StructField> {
     const match =
       /^\s*((?:[a-zA-Z]\S*,? )*)\s*((?:\[\d*\]|\*)*[a-zA-Z]\S*)/.exec(source);
     if (match) {
-      const type = match[2];
-      const name = match[1].trim() || type;
+      let type = match[2];
       if (/^(?:\[\d*\]|\*)*(struct|interface)$/.test(type)) {
         const match2 = /^\s*({.+})/s.exec(source.slice(match[0].length));
         if (!match2) {
+          // incomplete
           return;
         }
-        return struct.addField(name, `${type} ${match2[1]}`);
+        type = `${type} ${match2[1]}`;
       }
-      return struct.addField(name, type);
+      for (const i of match[1].trim().split(/,\s*/)) {
+        const name = i || type;
+        yield struct.addField(name, type);
+      }
     }
   }
 

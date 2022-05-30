@@ -31,8 +31,7 @@ export default class StreamParser {
     this.#b += line;
     this.#b += this.#eol;
     if (this.#parent) {
-      const field = StructField.fromSource(this.#parent, this.#b);
-      if (field) {
+      for (const field of StructField.fromSource(this.#parent, this.#b)) {
         yield field;
         this.#b = "";
       }

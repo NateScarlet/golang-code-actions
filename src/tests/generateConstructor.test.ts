@@ -64,4 +64,15 @@ suite("generateConstructor", () => {
       ext: ".go",
     });
   });
+
+  test("should generate for inline field", async () => {
+    const { document, editor } = await useTextDocument(
+      sampleFolder("generate_constructor_4.go")
+    );
+    editor.selections = [new vscode.Selection(3, 0, 3, 0)];
+    await generateConstructor();
+    await snapshot.match(document.getText(), {
+      ext: ".go",
+    });
+  });
 });
