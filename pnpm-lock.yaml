@@ -19,7 +19,7 @@ specifiers:
   eslint-plugin-prettier: 4.0.0
   glob: 8.0.3
   mocha: 10.0.0
-  prettier: 2.7.0
+  prettier: 2.7.1
   rimraf: 3.0.2
   ts-node: 10.8.0
   typescript: 4.7.2
@@ -42,10 +42,10 @@ devDependencies:
   eslint-config-prettier: 8.5.0_eslint@8.16.0
   eslint-import-resolver-typescript: 2.7.1_btspkuwbqkl4adpiufzbathtpi
   eslint-plugin-import: 2.26.0_ztbftnvu57zhg5cuougx2imeci
-  eslint-plugin-prettier: 4.0.0_tlvbzr674c626utz2goz2sdeh4
+  eslint-plugin-prettier: 4.0.0_6edyqcvmz3ta2ebn7rq2nny6ci
   glob: 8.0.3
   mocha: 10.0.0
-  prettier: 2.7.0
+  prettier: 2.7.1
   rimraf: 3.0.2
   ts-node: 10.8.0_ej2yfsqctexxlgourqx342e7oi
   typescript: 4.7.2
@@ -1101,7 +1101,7 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-plugin-prettier/4.0.0_tlvbzr674c626utz2goz2sdeh4:
+  /eslint-plugin-prettier/4.0.0_6edyqcvmz3ta2ebn7rq2nny6ci:
     resolution: {integrity: sha512-98MqmCJ7vJodoQK359bqQWaxOE0CS8paAz/GgjaZLyex4TTk3g9HugoO89EqWCrFiOqn9EVvcoo7gZzONCWVwQ==}
     engines: {node: '>=6.0.0'}
     peerDependencies:
@@ -1114,7 +1114,7 @@ packages:
     dependencies:
       eslint: 8.16.0
       eslint-config-prettier: 8.5.0_eslint@8.16.0
-      prettier: 2.7.0
+      prettier: 2.7.1
       prettier-linter-helpers: 1.0.0
     dev: true
 
@@ -1993,8 +1993,8 @@ packages:
       fast-diff: 1.2.0
     dev: true
 
-  /prettier/2.7.0:
-    resolution: {integrity: sha512-nwoX4GMFgxoPC6diHvSwmK/4yU8FFH3V8XWtLQrbj4IBsK2pkYhG4kf/ljF/haaZ/aii+wNJqISrCDPgxGWDVQ==}
+  /prettier/2.7.1:
+    resolution: {integrity: sha512-ujppO+MkdPqoVINuDFDRLClm7D78qbDt0/NR+wp5FqEZOoTNAjPHWj17QRhu7geIHJfcNhRk1XVQmF8Bp3ye+g==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
