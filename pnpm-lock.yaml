@@ -8,7 +8,7 @@ specifiers:
   '@types/vscode': ^1.66.0
   '@typescript-eslint/eslint-plugin': 5.30.0
   '@typescript-eslint/parser': 5.30.0
-  '@vscode/test-electron': 2.1.4
+  '@vscode/test-electron': 2.1.5
   dotenv: 16.0.1
   esbuild: 0.14.47
   eslint: 8.18.0
@@ -34,7 +34,7 @@ devDependencies:
   '@types/node': 16.11.41
   '@typescript-eslint/eslint-plugin': 5.30.0_5mtqsiui4sk53pmkx7i7ue45wm
   '@typescript-eslint/parser': 5.30.0_b5e7v2qnwxfo6hmiq56u52mz3e
-  '@vscode/test-electron': 2.1.4
+  '@vscode/test-electron': 2.1.5
   dotenv: 16.0.1
   esbuild: 0.14.47
   eslint: 8.18.0
@@ -330,8 +330,8 @@ packages:
     resolution: {integrity: sha512-sL/cEvJWAnClXw0wHk85/2L0G6Sj8UB0Ctc1TEMbKSsmpRosqhwj9gWgFRZSrBr2f9tiXISwNhCPmlfqUqyb9Q==}
     dev: true
 
-  /@vscode/test-electron/2.1.4:
-    resolution: {integrity: sha512-tHHAWNVwl8C7nyezHAHdNPWkksdXWvmae6bt4k1tJ9hvMm6QIIk95Mkutl82XHcD60mdP46EHDGU+xFsAvygOQ==}
+  /@vscode/test-electron/2.1.5:
+    resolution: {integrity: sha512-O/ioqFpV+RvKbRykX2ItYPnbcZ4Hk5V0rY4uhQjQTLhGL9WZUvS7exzuYQCCI+ilSqJpctvxq2llTfGXf9UnnA==}
     engines: {node: '>=8.9.3'}
     dependencies:
       http-proxy-agent: 4.0.1
