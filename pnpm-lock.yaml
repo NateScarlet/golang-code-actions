@@ -4,7 +4,7 @@ specifiers:
   '@nates/snapshot': 0.1.1
   '@types/glob': 7.2.0
   '@types/mocha': 9.1.1
-  '@types/node': 16.11.62
+  '@types/node': 16.11.63
   '@types/vscode': ^1.66.0
   '@typescript-eslint/eslint-plugin': 5.38.1
   '@typescript-eslint/parser': 5.38.1
@@ -31,7 +31,7 @@ devDependencies:
   '@nates/snapshot': 0.1.1
   '@types/glob': 7.2.0
   '@types/mocha': 9.1.1
-  '@types/node': 16.11.62
+  '@types/node': 16.11.63
   '@typescript-eslint/eslint-plugin': 5.38.1_c7qepppml3d4ahu5cnfwqe6ltq
   '@typescript-eslint/parser': 5.38.1_ypn2ylkkyfa5i233caldtndbqa
   '@vscode/test-electron': 2.1.5
@@ -47,7 +47,7 @@ devDependencies:
   mocha: 10.0.0
   prettier: 2.7.1
   rimraf: 3.0.2
-  ts-node: 10.9.1_qj2pceye7x36wjy4gpgxephk74
+  ts-node: 10.9.1_3rlfkdwgaoo3vh2yxky4exg44u
   typescript: 4.8.4
 
 packages:
@@ -200,7 +200,7 @@ packages:
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
     dependencies:
       '@types/minimatch': 3.0.5
-      '@types/node': 16.11.62
+      '@types/node': 16.11.63
     dev: true
 
   /@types/json-schema/7.0.11:
@@ -219,8 +219,8 @@ packages:
     resolution: {integrity: sha512-Z61JK7DKDtdKTWwLeElSEBcWGRLY8g95ic5FoQqI9CMx0ns/Ghep3B4DfcEimiKMvtamNVULVNKEsiwV3aQmXw==}
     dev: true
 
-  /@types/node/16.11.62:
-    resolution: {integrity: sha512-K/ggecSdwAAy2NUW4WKmF4Rc03GKbsfP+k326UWgckoS+Rzd2PaWbjk76dSmqdLQvLTJAO9axiTUJ6488mFsYQ==}
+  /@types/node/16.11.63:
+    resolution: {integrity: sha512-3OxnrEQLBz8EIIaHpg3CibmTAEGkDBcHY4fL5cnBwg2vd2yvHrUDGWxK+MlYPeXWWIoJJW79dGtU+oeBr6166Q==}
     dev: true
 
   /@types/vscode/1.66.0:
@@ -2280,7 +2280,7 @@ packages:
     resolution: {integrity: sha512-iawgk0hLP3SxGKDfnDJf8wTz4p2qImnyihM5Hh/sGvQ3K37dPi/w8sRhdNIxYA1TwFwc5mDhIJq+O0RsvXBKdQ==}
     dev: true
 
-  /ts-node/10.9.1_qj2pceye7x36wjy4gpgxephk74:
+  /ts-node/10.9.1_3rlfkdwgaoo3vh2yxky4exg44u:
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -2299,7 +2299,7 @@ packages:
       '@tsconfig/node12': 1.0.9
       '@tsconfig/node14': 1.0.1
       '@tsconfig/node16': 1.0.2
-      '@types/node': 16.11.62
+      '@types/node': 16.11.63
       acorn: 8.7.1
       acorn-walk: 8.2.0
       arg: 4.1.3
