@@ -4,7 +4,7 @@ specifiers:
   '@nates/snapshot': 0.1.1
   '@types/glob': 7.2.0
   '@types/mocha': 9.1.1
-  '@types/node': 16.11.68
+  '@types/node': 16.18.0
   '@types/vscode': ^1.66.0
   '@typescript-eslint/eslint-plugin': 5.40.1
   '@typescript-eslint/parser': 5.40.1
@@ -31,7 +31,7 @@ devDependencies:
   '@nates/snapshot': 0.1.1
   '@types/glob': 7.2.0
   '@types/mocha': 9.1.1
-  '@types/node': 16.11.68
+  '@types/node': 16.18.0
   '@typescript-eslint/eslint-plugin': 5.40.1_c4zyna56jjjrggqkyejnaxjxfu
   '@typescript-eslint/parser': 5.40.1_wyqvi574yv7oiwfeinomdzmc3m
   '@vscode/test-electron': 2.2.0
@@ -47,7 +47,7 @@ devDependencies:
   mocha: 10.0.0
   prettier: 2.7.1
   rimraf: 3.0.2
-  ts-node: 10.9.1_qz5pgscfesxhf7rldkrewqhv5y
+  ts-node: 10.9.1_uwvrucnxy7xmunb7f53wnhbsze
   typescript: 4.8.4
 
 packages:
@@ -196,7 +196,7 @@ packages:
     resolution: {integrity: sha512-ZUxbzKl0IfJILTS6t7ip5fQQM/J3TJYubDm3nMbgubNNYS62eXeUpoLUC8/7fJNiFYHTrGPQn7hspDUzIHX3UA==}
     dependencies:
       '@types/minimatch': 3.0.5
-      '@types/node': 16.11.68
+      '@types/node': 16.18.0
     dev: true
 
   /@types/json-schema/7.0.11:
@@ -215,8 +215,8 @@ packages:
     resolution: {integrity: sha512-Z61JK7DKDtdKTWwLeElSEBcWGRLY8g95ic5FoQqI9CMx0ns/Ghep3B4DfcEimiKMvtamNVULVNKEsiwV3aQmXw==}
     dev: true
 
-  /@types/node/16.11.68:
-    resolution: {integrity: sha512-JkRpuVz3xCNCWaeQ5EHLR/6woMbHZz/jZ7Kmc63AkU+1HxnoUugzSWMck7dsR4DvNYX8jp9wTi9K7WvnxOIQZQ==}
+  /@types/node/16.18.0:
+    resolution: {integrity: sha512-LqYqYzYvnbCaQfLAwRt0zboqnsViwhZm+vjaMSqcfN36vulAg7Pt0T83q4WZO2YOBw3XdyHi8cQ88H22zmULOA==}
     dev: true
 
   /@types/semver/7.3.12:
@@ -2287,7 +2287,7 @@ packages:
     resolution: {integrity: sha512-iawgk0hLP3SxGKDfnDJf8wTz4p2qImnyihM5Hh/sGvQ3K37dPi/w8sRhdNIxYA1TwFwc5mDhIJq+O0RsvXBKdQ==}
     dev: true
 
-  /ts-node/10.9.1_qz5pgscfesxhf7rldkrewqhv5y:
+  /ts-node/10.9.1_uwvrucnxy7xmunb7f53wnhbsze:
     resolution: {integrity: sha512-NtVysVPkxxrwFGUUxGYhfux8k78pQB3JqYBXlLRZgdGUqTO5wU/UyHop5p70iEbGhB7q5KmiZiU0Y3KlJrScEw==}
     hasBin: true
     peerDependencies:
@@ -2306,7 +2306,7 @@ packages:
       '@tsconfig/node12': 1.0.9
       '@tsconfig/node14': 1.0.1
       '@tsconfig/node16': 1.0.2
-      '@types/node': 16.11.68
+      '@types/node': 16.18.0
       acorn: 8.7.1
       acorn-walk: 8.2.0
       arg: 4.1.3
