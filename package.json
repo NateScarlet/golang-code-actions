@@ -54,7 +54,7 @@
     "@nates/snapshot": "0.1.1",
     "@types/glob": "7.2.0",
     "@types/mocha": "9.1.1",
-    "@types/node": "16.18.13",
+    "@types/node": "16.18.14",
     "@typescript-eslint/eslint-plugin": "5.54.0",
     "@typescript-eslint/parser": "5.54.0",
     "@vscode/test-electron": "2.2.0",
