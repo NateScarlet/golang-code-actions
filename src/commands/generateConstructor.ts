@@ -72,5 +72,5 @@ export default async function generateConstructor() {
     s.appendText(eol);
   });
 
-  await editor.insertSnippet(s, new vscode.Position(document.lineCount + 1, 0));
+  await editor.insertSnippet(s, new vscode.Position(document.lineCount - 1, 0));
 }

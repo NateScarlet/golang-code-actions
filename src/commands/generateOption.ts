@@ -92,5 +92,5 @@ export default async function generateOption() {
     return;
   }
 
-  await editor.insertSnippet(s, new vscode.Position(document.lineCount + 1, 0));
+  await editor.insertSnippet(s, new vscode.Position(document.lineCount - 1, 0));
 }
