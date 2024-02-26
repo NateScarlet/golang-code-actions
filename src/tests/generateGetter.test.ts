@@ -104,4 +104,21 @@ suite("generateGetter", () => {
       ext: ".go",
     });
   });
+
+  test("should insert after last line", async () => {
+    const { document, editor } = await useTextDocument(
+      sampleFolder("generate_getter_2.go")
+    );
+    await editor.edit((b) => {
+      b.insert(
+        new vscode.Position(document.lineCount - 1, 0),
+        "// last line content"
+      );
+    });
+    editor.selections = [new vscode.Selection(4, 0, 4, 0)];
+    await generateGetter();
+    await snapshot.match(document.getText(), {
+      ext: ".go",
+    });
+  });
 });

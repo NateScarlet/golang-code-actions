@@ -51,5 +51,8 @@ export default async function generateGetter() {
     return;
   }
 
-  await editor.insertSnippet(s, new vscode.Position(document.lineCount - 1, 0));
+  await editor.insertSnippet(
+    s,
+    document.lineAt(document.lineCount - 1).range.end
+  );
 }
