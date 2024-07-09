@@ -34,7 +34,7 @@ jobs:
         run: pnpm run vscode:prepublish
 
       - name: Run tests
-        uses: coactions/setup-xvfb@ab4686bf3d3328f3a96cd13874243d7c83d9cf84
+        uses: coactions/setup-xvfb@6b00cf1889f4e1d5a48635647013c0508128ee1a
         with:
           run: pnpm test
         env:
