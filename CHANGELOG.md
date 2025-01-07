@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.0.14](https://github.com/NateScarlet/golang-code-actions/compare/v0.0.13...v0.0.14) (2025-01-07)
+
+### Features
+
+- update option naming style ([0e2b82d](https://github.com/NateScarlet/golang-code-actions/commit/0e2b82d2488bd9948d61a541fee69fc98c37d316))
+
+### Bug Fixes
+
+- **deps:** update dependency @types/vscode to v1.91.0 ([adda7d9](https://github.com/NateScarlet/golang-code-actions/commit/adda7d99cf38911e451de70e22353b814a134bd7))
+- **deps:** update dependency @types/vscode to v1.94.0 ([dc8bd28](https://github.com/NateScarlet/golang-code-actions/commit/dc8bd28ea09f94fcf8b438525de7d9a4d8c0f1bc))
+
 ## [0.0.13](https://github.com/NateScarlet/golang-code-actions/compare/v0.0.12...v0.0.13) (2024-02-26)
 
 ### Bug Fixes
