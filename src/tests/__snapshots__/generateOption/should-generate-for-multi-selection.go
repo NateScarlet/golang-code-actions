@@ -32,7 +32,7 @@ func Struct1OptionF2(v int) Struct1Option {
 	}
 }
 
-func MyStruct2OptionF1(v struct1) MyStruct2Option {
+func MyStruct2WithF1(v struct1) MyStruct2Option {
 	return func(opts *Struct2) {
 		opts.f1 = v
 	}

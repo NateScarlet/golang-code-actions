@@ -61,25 +61,25 @@ func Struct1OptionF5(v string) Struct1Option {
 	}
 }
 
-func MyStruct2OptionF1(v struct1) MyStruct2Option {
+func MyStruct2WithF1(v struct1) MyStruct2Option {
 	return func(opts *Struct2) {
 		opts.f1 = v
 	}
 }
 
-func MyStruct2OptionF2(v ...string) MyStruct2Option {
+func MyStruct2WithF2(v ...string) MyStruct2Option {
 	return func(opts *Struct2) {
 		opts.f2 = v
 	}
 }
 
-func MyStruct2OptionF3(v [16]int) MyStruct2Option {
+func MyStruct2WithF3(v [16]int) MyStruct2Option {
 	return func(opts *Struct2) {
 		opts.f3 = v
 	}
 }
 
-func MyStruct2OptionF4(v ...struct {
+func MyStruct2WithF4(v ...struct {
 		f4a uint64
 	}) MyStruct2Option {
 	return func(opts *Struct2) {

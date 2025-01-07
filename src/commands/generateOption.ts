@@ -66,8 +66,11 @@ export default async function generateOption() {
       argAssign = "&v";
     }
     s.appendText("func ");
-    s.appendPlaceholder(optionTypeName, structCount);
-    s.appendText(upperFirst(i.name));
+    const prefix = optionTypeName.replace(/Option$/, "With");
+    s.appendPlaceholder(prefix, structCount);
+    if (!prefix.includes(upperFirst(i.name))) {
+      s.appendText(upperFirst(i.name).replace(/By$/, ""));
+    }
     s.appendText("(v ");
     s.appendText(argType);
     s.appendText(") ");
