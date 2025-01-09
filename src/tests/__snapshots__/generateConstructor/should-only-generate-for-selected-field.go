@@ -1,24 +1,12 @@
 package main
 
 func NewStruct1(
-	f1 string,
 	f2 int,
-	f3 struct {
-		f3a string
-		f3b uint64
-	},
-	f4 interface {
-		Method1()
-	},
-	f5 string,
-) *struct1 {
-	return &struct1{
-		f1,
-		f2,
-		f3,
-		f4,
-		f5,
+) (obj *struct1, err error) {
+	obj = &struct1{
+		f2: f2,
 	}
+	return
 }
 
 type struct1 struct {

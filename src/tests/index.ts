@@ -1,6 +1,6 @@
-import * as path from "path";
-import * as Mocha from "mocha";
-import * as glob from "glob";
+import path from "path";
+import Mocha from "mocha";
+import glob from "glob";
 import snapshot from "@nates/snapshot";
 import workspaceFolder from "./workspaceFolder";
 
@@ -11,6 +11,7 @@ export function run(): Promise<void> {
   const mocha = new Mocha({
     ui: "tdd",
     color: true,
+    grep: process.env.MOCHA_GREP,
     rootHooks: {
       beforeEach: [
         function setupSnapshot(this: Mocha.Context) {

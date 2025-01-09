@@ -37,18 +37,19 @@
   "scripts": {
     "compile": "tsc -p ./",
     "lint": "eslint src --ext ts",
-    "pretest": "npm run build && npm run lint",
-    "test:build": "rimraf out && tsc -p ./",
-    "test": "npm run test:build && node ./out/tests/runTest.js",
+    "pretest": "bash ./scripts/copy-static.sh && tsc -p ./",
+    "test": "node ./out/tests/runTest.js",
     "vscode:prepublish": "npm run build-base -- --minify",
-    "build-base": "rimraf out && esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --format=cjs --platform=node",
+    "build-base": "bash ./scripts/build.sh",
     "build": "npm run build-base -- --sourcemap",
     "watch": "npm run build-base -- --sourcemap --watch",
     "package": "vsce package --no-dependencies",
     "publish": "vsce publish --no-dependencies"
   },
   "dependencies": {
-    "@types/vscode": "^1.66.0"
+    "@types/vscode": "^1.66.0",
+    "tree-sitter-go": "^0.23.4",
+    "web-tree-sitter": "^0.24.6"
   },
   "devDependencies": {
     "@nates/snapshot": "0.1.1",
@@ -58,6 +59,7 @@
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",
     "@vscode/test-electron": "2.4.1",
+    "commander": "^13.0.0",
     "dotenv": "16.4.5",
     "esbuild": "0.24.0",
     "eslint": "8.57.1",
@@ -69,7 +71,6 @@
     "glob": "8.0.3",
     "mocha": "10.0.0",
     "prettier": "2.8.8",
-    "rimraf": "3.0.2",
     "ts-node": "10.9.2",
     "typescript": "4.9.5"
   },

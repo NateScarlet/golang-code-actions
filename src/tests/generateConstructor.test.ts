@@ -75,4 +75,26 @@ suite("generateConstructor", () => {
       ext: ".go",
     });
   });
+
+  test("should only generate for selected field", async () => {
+    const { document, editor } = await useTextDocument(
+      sampleFolder("generate_constructor_1.go")
+    );
+    editor.selections = [new vscode.Selection(4, 0, 5, 0)];
+    await generateConstructor();
+    await snapshot.match(document.getText(), {
+      ext: ".go",
+    });
+  });
+
+  test("should supports generic", async () => {
+    const { document, editor } = await useTextDocument(
+      sampleFolder("generate_constructor_5.go")
+    );
+    editor.selections = [new vscode.Selection(4, 0, 5, 0)];
+    await generateConstructor();
+    await snapshot.match(document.getText(), {
+      ext: ".go",
+    });
+  });
 });
