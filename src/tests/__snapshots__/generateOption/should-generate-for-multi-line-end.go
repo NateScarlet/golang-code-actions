@@ -13,6 +13,17 @@ type struct1 struct {
 	F5 string `json:"field5"`
 }
 
+type Struct1Option = func(opts *struct1)
+
+func Struct1WithF3(f3 struct {
+		f3a string
+		f3b uint64
+	}) Struct1Option {
+	return func(opts *struct1) {
+		opts.f3 = f3
+	}
+}
+
 type Struct2 struct {
 	f1 struct1
 	f2 []string
@@ -23,15 +34,3 @@ type Struct2 struct {
 }
 
 type MyStruct2Option = func(*Struct2)
-
-type Struct1Option = func(opts *struct1)
-
-func Struct1OptionF3(v struct {
-		f3a string
-		f3b uint64
-	}) Struct1Option {
-	return func(opts *struct1) {
-		opts.f3 = v
-	}
-}
-

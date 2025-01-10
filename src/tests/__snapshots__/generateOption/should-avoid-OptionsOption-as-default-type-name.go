@@ -7,9 +7,8 @@ type someOptions struct {
 
 type SomeOption = func(opts *someOptions)
 
-func SomeOptionF2(v string) SomeOption {
+func SomeWithF2(f2 string) SomeOption {
 	return func(opts *someOptions) {
-		opts.f2 = v
+		opts.f2 = f2
 	}
 }
-

@@ -13,6 +13,37 @@ type struct1 struct {
 	F5 string `json:"field5"`
 }
 
+type Struct1Option = func(opts *struct1)
+
+func Struct1WithF1(f1 string) Struct1Option {
+	return func(opts *struct1) {
+		opts.f1 = f1
+	}
+}
+
+func Struct1WithF2(f2 int) Struct1Option {
+	return func(opts *struct1) {
+		opts.f2 = f2
+	}
+}
+
+func Struct1WithF3(f3 struct {
+		f3a string
+		f3b uint64
+	}) Struct1Option {
+	return func(opts *struct1) {
+		opts.f3 = f3
+	}
+}
+
+func Struct1WithF4(f4 interface {
+		Method1()
+	}) Struct1Option {
+	return func(opts *struct1) {
+		opts.f4 = f4
+	}
+}
+
 type Struct2 struct {
 	f1 struct1
 	f2 []string
@@ -24,66 +55,28 @@ type Struct2 struct {
 
 type MyStruct2Option = func(*Struct2)
 
-type Struct1Option = func(opts *struct1)
-
-func Struct1OptionF1(v string) Struct1Option {
-	return func(opts *struct1) {
-		opts.f1 = v
-	}
-}
-
-func Struct1OptionF2(v int) Struct1Option {
-	return func(opts *struct1) {
-		opts.f2 = v
-	}
-}
-
-func Struct1OptionF3(v struct {
-		f3a string
-		f3b uint64
-	}) Struct1Option {
-	return func(opts *struct1) {
-		opts.f3 = v
-	}
-}
-
-func Struct1OptionF4(v interface {
-		Method1()
-	}) Struct1Option {
-	return func(opts *struct1) {
-		opts.f4 = v
-	}
-}
-
-func Struct1OptionF5(v string) Struct1Option {
-	return func(opts *struct1) {
-		opts.F5 = v
-	}
-}
-
-func MyStruct2WithF1(v struct1) MyStruct2Option {
+func MyStruct2WithF1(f1 struct1) MyStruct2Option {
 	return func(opts *Struct2) {
-		opts.f1 = v
+		opts.f1 = f1
 	}
 }
 
-func MyStruct2WithF2(v ...string) MyStruct2Option {
+func MyStruct2WithF2(f2 ...string) MyStruct2Option {
 	return func(opts *Struct2) {
-		opts.f2 = v
+		opts.f2 = f2
 	}
 }
 
-func MyStruct2WithF3(v [16]int) MyStruct2Option {
+func MyStruct2WithF3(f3 [16]int) MyStruct2Option {
 	return func(opts *Struct2) {
-		opts.f3 = v
+		opts.f3 = f3
 	}
 }
 
-func MyStruct2WithF4(v ...struct {
+func MyStruct2WithF4(f4 ...struct {
 		f4a uint64
 	}) MyStruct2Option {
 	return func(opts *Struct2) {
-		opts.f4 = v
+		opts.f4 = f4
 	}
 }
-

@@ -3,6 +3,7 @@ import lowerFirst from "../utils/lowerFirst";
 import upperFirst from "../utils/upperFirst";
 import findStruct from "../parser/findStruct";
 import parseDocument from "../parser/parseDocument";
+import toStructReceiver from "../parser/toStructReceiver";
 
 export default async function generateConstructor() {
   const editor = vscode.window.activeTextEditor;
@@ -38,10 +39,7 @@ export default async function generateConstructor() {
         // 选中所有字段时，使用匿名分配并只用一个返回值。
         const compact = selectedFields.length === struct.fields.length;
 
-        const paramNames =
-          struct.typeParams.length > 0
-            ? `[${struct.typeParams.map((i) => i.name).join(",")}]`
-            : "";
+        const receiver = toStructReceiver(struct);
         let text = `\
 func New${upperFirst(struct.name)}${struct.typeParamDecl}(${
           selectedFields.length > 0
@@ -51,15 +49,15 @@ ${selectedFields.map((f) => `\t${lowerFirst(f.name)} ${f.type},`).join("\n")}
             : ""
         }) `;
         if (compact) {
-          text += `*${struct.name}${paramNames} {
-\treturn &${struct.name}${paramNames}{
+          text += `*${receiver} {
+\treturn &${receiver}{
 ${selectedFields.map((i) => `\t\t${lowerFirst(i.name)},`).join("\n")}
 \t}
 }
 `;
         } else {
-          text += `(obj *${struct.name}${paramNames}, err error) {
-\tobj = &${struct.name}${paramNames}{
+          text += `(obj *${receiver}, err error) {
+\tobj = &${receiver}{
 ${selectedFields.map((f) => `\t\t${f.name}: ${lowerFirst(f.name)},`).join("\n")}
 \t}
 \treturn

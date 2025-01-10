@@ -11,9 +11,8 @@ type Struct2 struct {
 
 type Struct2Option = func(opts *Struct2)
 
-func Struct2OptionStruct1(v struct1) Struct2Option {
+func Struct2WithStruct1(struct1 struct1) Struct2Option {
 	return func(opts *Struct2) {
-		opts.struct1 = v
+		opts.struct1 = struct1
 	}
 }
-

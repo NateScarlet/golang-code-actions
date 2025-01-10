@@ -4,6 +4,7 @@ import defaultIdentifier from "../utils/defaultIdentifier";
 import isExportedName from "../utils/isExportedName";
 import toExportedName from "../utils/toExportedName";
 import parseDocument from "../parser/parseDocument";
+import toStructReceiver from "../parser/toStructReceiver";
 
 export default async function generateGetter() {
   const editor = vscode.window.activeTextEditor;
@@ -35,13 +36,9 @@ export default async function generateGetter() {
           if (!isSelected) {
             continue;
           }
-          const paramNames =
-            struct.typeParams.length > 0
-              ? `[${struct.typeParams.map((i) => i.name).join(",")}]`
-              : "";
           const text = `
 
-func (${structIdentifier} ${struct.name}${paramNames}) ${toExportedName(
+func (${structIdentifier} ${toStructReceiver(struct)}) ${toExportedName(
             field.name
           )}() ${field.type} {
 \treturn ${structIdentifier}.${field.name}

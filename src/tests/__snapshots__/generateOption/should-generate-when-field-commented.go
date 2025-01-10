@@ -7,9 +7,8 @@ type struct1 struct {
 
 type Struct1Option = func(opts *struct1)
 
-func Struct1OptionF1(v string) Struct1Option {
+func Struct1WithF1(f1 string) Struct1Option {
 	return func(opts *struct1) {
-		opts.f1 = v
+		opts.f1 = f1
 	}
 }
-

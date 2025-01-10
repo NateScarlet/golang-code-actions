@@ -174,4 +174,15 @@ suite("generateOption", () => {
       ext: ".go",
     });
   });
+
+  test("should supports generic", async () => {
+    const { document, editor } = await useTextDocument(
+      sampleFolder("generate_option_9.go")
+    );
+    editor.selections = [new vscode.Selection(3, 0, 3, 0)];
+    await generateOption();
+    await snapshot.match(document.getText(), {
+      ext: ".go",
+    });
+  });
 });
