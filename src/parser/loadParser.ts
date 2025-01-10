@@ -1,23 +1,38 @@
 import Parser from "web-tree-sitter";
-// import { Wasm } from "@vscode/wasm-wasi/v1";
 import * as vscode from "vscode";
-import extensionPath from "../utils/extensionPath";
+import extensionUri from "../utils/extensionUri";
 
 export type { Parser };
 
+function toFile(uri: vscode.Uri): string {
+  if (vscode.env.uiKind === vscode.UIKind.Web) {
+    return uri.toString();
+  }
+  return uri.fsPath;
+}
+
 async function load() {
-  // const wasm = await Wasm.load();
-  await Parser.init({
-    locateFile: (pathArg: string): string => {
-      return vscode.Uri.file(extensionPath("out", pathArg)).fsPath;
+  return vscode.window.withProgress(
+    {
+      location: vscode.ProgressLocation.Window,
+      title: "initiating parser",
     },
-  });
-  const parser = new Parser();
-  const Go = await Parser.Language.load(
-    vscode.Uri.file(extensionPath("out", "tree-sitter-go.wasm")).fsPath
+    async (progress) => {
+      progress.report({ message: "load parser" });
+      await Parser.init({
+        locateFile: (pathArg: string): string => {
+          return toFile(extensionUri("out", pathArg));
+        },
+      });
+      const parser = new Parser();
+      progress.report({ message: "load golang grammer" });
+      const Go = await Parser.Language.load(
+        toFile(extensionUri("out", "tree-sitter-go.wasm"))
+      );
+      parser.setLanguage(Go);
+      return parser;
+    }
   );
-  parser.setLanguage(Go);
-  return parser;
 }
 
 let loadOnce: ReturnType<typeof load> | undefined;

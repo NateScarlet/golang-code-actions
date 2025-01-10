@@ -18,6 +18,7 @@
     "url": "https://github.com/NateScarlet/golang-code-actions"
   },
   "main": "./out/extension.js",
+  "browser": "./out/extension.js",
   "contributes": {
     "commands": [
       {
@@ -34,11 +35,18 @@
       }
     ]
   },
+  "capabilities": {
+    "virtualWorkspaces": true,
+    "untrustedWorkspaces": {
+      "supported": true
+    }
+  },
   "scripts": {
     "compile": "tsc -p ./",
     "lint": "eslint src --ext ts",
     "pretest": "bash ./scripts/copy-static.sh && tsc -p ./",
     "test": "node ./out/tests/runTest.js",
+    "test:web": "npm run build && vscode-test-web --extensionDevelopmentPath=.",
     "vscode:prepublish": "npm run build-base -- --minify",
     "build-base": "bash ./scripts/build.sh",
     "build": "npm run build-base -- --sourcemap",
@@ -59,6 +67,7 @@
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@typescript-eslint/parser": "5.62.0",
     "@vscode/test-electron": "2.4.1",
+    "@vscode/test-web": "^0.0.65",
     "commander": "^13.0.0",
     "dotenv": "16.4.5",
     "esbuild": "0.24.0",
