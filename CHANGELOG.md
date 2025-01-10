@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.0.15](https://github.com/NateScarlet/golang-code-actions/compare/v0.0.14...v0.0.15) (2025-01-10)
+
+### Features
+
+- supports browser environment ([26585c2](https://github.com/NateScarlet/golang-code-actions/commit/26585c24e0a2373cf692c6a44cc18d53710c53d5))
+- update constructor style and supports generic ([b1489dc](https://github.com/NateScarlet/golang-code-actions/commit/b1489dc93b0ac75a7c2543bf0253025c538a3fbb))
+- update getter style and supports generic ([c224e22](https://github.com/NateScarlet/golang-code-actions/commit/c224e2278a1bfeb55ad7160f1baf34770aa8149a))
+- update option style and supports generic ([f58ef83](https://github.com/NateScarlet/golang-code-actions/commit/f58ef83be81a9e7e34838ab93772eab66f541717))
+
 ## [0.0.14](https://github.com/NateScarlet/golang-code-actions/compare/v0.0.13...v0.0.14) (2025-01-07)
 
 ### Features
