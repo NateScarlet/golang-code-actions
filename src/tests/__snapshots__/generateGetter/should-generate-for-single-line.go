@@ -12,6 +12,10 @@ type struct1 struct {
 	}
 }
 
+func (s struct1) F1() string {
+	return s.f1
+}
+
 type Struct2 struct {
 	f1 struct1
 	f2 []string
@@ -20,8 +24,3 @@ type Struct2 struct {
 		f4a uint64
 	}
 }
-
-func (obj struct1) F1() string {
-	return obj.f1
-}
-

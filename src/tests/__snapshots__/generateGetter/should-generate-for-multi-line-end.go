@@ -12,6 +12,13 @@ type struct1 struct {
 	}
 }
 
+func (s struct1) F3() struct {
+		f3a string
+		f3b uint64
+	} {
+	return s.f3
+}
+
 type Struct2 struct {
 	f1 struct1
 	f2 []string
@@ -20,11 +27,3 @@ type Struct2 struct {
 		f4a uint64
 	}
 }
-
-func (obj struct1) F3() struct {
-		f3a string
-		f3b uint64
-	} {
-	return obj.f3
-}
-

@@ -1,10 +1,12 @@
 import snapshot from "@nates/snapshot";
 
 import * as vscode from "vscode";
+import assert from "node:assert";
 import generateGetter from "../commands/generateGetter";
 import sampleFolder from "./sampleFolder";
 
 import useTextDocument from "./useTextDocument";
+import toExportedName from "../utils/toExportedName";
 
 suite("generateGetter", () => {
   test("should generate for single line", async () => {
@@ -105,7 +107,7 @@ suite("generateGetter", () => {
     });
   });
 
-  test("should insert after last line", async () => {
+  test("should insert after struct", async () => {
     const { document, editor } = await useTextDocument(
       sampleFolder("generate_getter_2.go")
     );
@@ -120,5 +122,25 @@ suite("generateGetter", () => {
     await snapshot.match(document.getText(), {
       ext: ".go",
     });
+  });
+
+  test("should supports generic", async () => {
+    const { document, editor } = await useTextDocument(
+      sampleFolder("generate_getter_5.go")
+    );
+    editor.selections = [new vscode.Selection(3, 0, 4, 0)];
+    await generateGetter();
+    await snapshot.match(document.getText(), {
+      ext: ".go",
+    });
+  });
+
+  test("should handle special names", async () => {
+    assert.equal(toExportedName("id"), "ID");
+    assert.equal(toExportedName("userId"), "UserId");
+    assert.equal(toExportedName("userID"), "UserID");
+    assert.equal(toExportedName("url"), "URL");
+    assert.equal(toExportedName("fileUrl"), "FileUrl");
+    assert.equal(toExportedName("fileURL"), "FileURL");
   });
 });

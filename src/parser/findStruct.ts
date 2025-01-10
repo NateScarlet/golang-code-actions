@@ -6,6 +6,7 @@ export interface StructField {
   type: string;
   embeded: boolean;
   node: Parser.SyntaxNode;
+  typeNode: Parser.SyntaxNode;
 }
 
 export interface StructTypeParam {
@@ -101,6 +102,7 @@ export default async function* findStruct(
           type: typeNode.text,
           node: fieldNameNode,
           embeded: false,
+          typeNode,
         });
       });
       // 嵌入结构体没有字段名
@@ -109,6 +111,7 @@ export default async function* findStruct(
           name: typeNode.text,
           type: typeNode.text,
           node: typeNode,
+          typeNode,
           embeded: true,
         });
       }

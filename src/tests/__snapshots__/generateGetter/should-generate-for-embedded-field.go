@@ -9,7 +9,6 @@ type Struct2 struct {
 	struct1
 }
 
-func (obj Struct2) Struct1() struct1 {
-	return obj.struct1
+func (s Struct2) Struct1() struct1 {
+	return s.struct1
 }
-
