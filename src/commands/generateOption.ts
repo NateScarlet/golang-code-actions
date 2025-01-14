@@ -6,6 +6,8 @@ import findStruct from "../parser/findStruct";
 import isExportedName from "../utils/isExportedName";
 import toStructReceiver from "../parser/toStructReceiver";
 import toReceiverParameters from "../parser/toReceiverParameters";
+import toIdentifier from "../utils/toIdentifier";
+import toFieldName from "../parser/toFieldName";
 
 function defaultOptionTypeName(structName: string): string {
   return `${upperFirst(structName)}Option`.replace(/OptionsOption$/, "Option");
@@ -61,7 +63,7 @@ type ${optionTypeDecl.name}${
           }
 
           let argType = field.type;
-          const argIdent = field.name;
+          const argIdent = toIdentifier(field.name, ["opts"], true);
           let argAssign = argIdent;
           if (argType.startsWith("[]")) {
             argType = `...${argType.slice(2)}`;
@@ -71,8 +73,9 @@ type ${optionTypeDecl.name}${
           }
           const prefix = optionTypeDecl.name.replace(/Option$/, "With");
           let funcName = prefix;
-          if (!funcName.includes(upperFirst(field.name))) {
-            funcName += upperFirst(field.name).replace(/By$/, "");
+          const fieldName = toFieldName(field);
+          if (!funcName.includes(upperFirst(fieldName))) {
+            funcName += upperFirst(fieldName).replace(/By$/, "");
           }
           const text = `
 
@@ -80,7 +83,7 @@ func ${funcName}${struct.typeParamDecl}(${argIdent} ${argType}) ${
             optionTypeDecl.name
           }${toReceiverParameters(struct)} {
 \treturn func(opts *${toStructReceiver(struct)}) {
-\t\topts.${field.name} = ${argAssign}
+\t\topts.${fieldName} = ${argAssign}
 \t}
 }`;
           const location = document.positionAt(optionTypeDecl.node.endIndex);

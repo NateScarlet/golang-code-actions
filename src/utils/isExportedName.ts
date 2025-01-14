@@ -2,5 +2,6 @@ export default function isExportedName(name: string): boolean {
   if (!name) {
     return false;
   }
-  return name[0] === name[0].toUpperCase();
+  const lastPart = name.split(".").pop() ?? name;
+  return lastPart[0] === lastPart[0].toUpperCase();
 }

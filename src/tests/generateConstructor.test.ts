@@ -97,4 +97,14 @@ suite("generateConstructor", () => {
       ext: ".go",
     });
   });
+  test("should supports embed field", async () => {
+    const { document, editor } = await useTextDocument(
+      sampleFolder("embed_fields.go")
+    );
+    editor.selections = [new vscode.Selection(8, 0, 8, 0)];
+    await generateConstructor();
+    await snapshot.match(document.getText(), {
+      ext: ".go",
+    });
+  });
 });

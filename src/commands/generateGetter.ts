@@ -1,10 +1,11 @@
 import * as vscode from "vscode";
 import findStruct from "../parser/findStruct";
-import defaultIdentifier from "../utils/defaultIdentifier";
+import toIdentifier from "../utils/toIdentifier";
 import isExportedName from "../utils/isExportedName";
 import toExportedName from "../utils/toExportedName";
 import parseDocument from "../parser/parseDocument";
 import toStructReceiver from "../parser/toStructReceiver";
+import toFieldName from "../parser/toFieldName";
 
 export default async function generateGetter() {
   const editor = vscode.window.activeTextEditor;
@@ -17,9 +18,10 @@ export default async function generateGetter() {
   const edits = Array.from(
     (function* edit() {
       for (const struct of findStruct(tree.rootNode)) {
-        const structIdentifier = defaultIdentifier(struct.name);
+        const structIdentifier = toIdentifier(struct.name);
         for (const field of struct.fields) {
-          if (isExportedName(field.name)) {
+          const fieldName = toFieldName(field);
+          if (isExportedName(fieldName)) {
             continue;
           }
           const range = new vscode.Range(
@@ -39,9 +41,9 @@ export default async function generateGetter() {
           const text = `
 
 func (${structIdentifier} ${toStructReceiver(struct)}) ${toExportedName(
-            field.name
+            toIdentifier(fieldName, undefined, true)
           )}() ${field.type} {
-\treturn ${structIdentifier}.${field.name}
+\treturn ${structIdentifier}.${fieldName}
 }`;
           const location = document.positionAt(struct.node.endIndex);
           yield new vscode.TextEdit(new vscode.Range(location, location), text);

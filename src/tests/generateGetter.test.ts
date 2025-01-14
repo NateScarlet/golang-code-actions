@@ -143,4 +143,14 @@ suite("generateGetter", () => {
     assert.equal(toExportedName("fileUrl"), "FileUrl");
     assert.equal(toExportedName("fileURL"), "FileURL");
   });
+  test("should supports embed field", async () => {
+    const { document, editor } = await useTextDocument(
+      sampleFolder("embed_fields.go")
+    );
+    editor.selections = [new vscode.Selection(8, 0, 8, 0)];
+    await generateGetter();
+    await snapshot.match(document.getText(), {
+      ext: ".go",
+    });
+  });
 });

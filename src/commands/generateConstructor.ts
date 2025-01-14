@@ -4,6 +4,7 @@ import upperFirst from "../utils/upperFirst";
 import findStruct from "../parser/findStruct";
 import parseDocument from "../parser/parseDocument";
 import toStructReceiver from "../parser/toStructReceiver";
+import toIdentifier from "../utils/toIdentifier";
 
 export default async function generateConstructor() {
   const editor = vscode.window.activeTextEditor;
@@ -40,18 +41,25 @@ export default async function generateConstructor() {
         const compact = selectedFields.length === struct.fields.length;
 
         const receiver = toStructReceiver(struct);
+        const args = new Map<string, string>();
+        selectedFields.forEach((i) => {
+          args.set(
+            i.name,
+            toIdentifier(i.name, Array.from(args.values()), true)
+          );
+        });
         let text = `\
 func New${upperFirst(struct.name)}${struct.typeParamDecl}(${
           selectedFields.length > 0
             ? `
-${selectedFields.map((f) => `\t${lowerFirst(f.name)} ${f.type},`).join("\n")}
+${selectedFields.map((f) => `\t${args.get(f.name)} ${f.type},`).join("\n")}
 `
             : ""
         }) `;
         if (compact) {
           text += `*${receiver} {
 \treturn &${receiver}{
-${selectedFields.map((i) => `\t\t${lowerFirst(i.name)},`).join("\n")}
+${selectedFields.map((i) => `\t\t${args.get(i.name)},`).join("\n")}
 \t}
 }
 `;
