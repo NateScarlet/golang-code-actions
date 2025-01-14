@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.0.16](https://github.com/NateScarlet/golang-code-actions/compare/v0.0.15...v0.0.16) (2025-01-14)
+
+### Features
+
+- supports embed fields ([2d43d22](https://github.com/NateScarlet/golang-code-actions/commit/2d43d22f376ac6499ebafbddd823128011b50f8d))
+
 ## [0.0.15](https://github.com/NateScarlet/golang-code-actions/compare/v0.0.14...v0.0.15) (2025-01-10)
 
 ### Features
