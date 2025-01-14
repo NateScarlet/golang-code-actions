@@ -69,7 +69,7 @@
     "@vscode/test-electron": "2.4.1",
     "@vscode/test-web": "^0.0.65",
     "commander": "^13.0.0",
-    "dotenv": "16.4.5",
+    "dotenv": "16.4.7",
     "esbuild": "0.24.0",
     "eslint": "8.57.1",
     "eslint-config-airbnb-base": "15.0.0",
