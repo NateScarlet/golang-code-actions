@@ -19,7 +19,6 @@ function resolveTypeNode(node: Parser.SyntaxNode): {
   let currentNode: Parser.SyntaxNode | null = node;
   let isPointer = false;
 
-  // eslint-disable-next-line no-constant-condition
   while (currentNode) {
     switch (currentNode.type) {
       case "pointer_type":
