@@ -16,30 +16,30 @@ function resolveTypeNode(node: Parser.SyntaxNode): {
   type: string;
   isPointer: boolean;
 } {
-  let currentNode = node;
+  let currentNode: Parser.SyntaxNode | null = node;
   let isPointer = false;
 
   // eslint-disable-next-line no-constant-condition
-  while (true) {
+  while (currentNode) {
     switch (currentNode.type) {
       case "pointer_type":
         isPointer = true;
         // 移动至指针指向的类型节点
-        currentNode = currentNode.childForFieldName("element") || currentNode;
+        currentNode = currentNode.childForFieldName("element");
         break;
       case "parenthesized_type":
         // 进入括号内的类型
-        currentNode = currentNode.firstNamedChild || currentNode;
+        currentNode = currentNode.firstNamedChild;
         break;
       case "array_type":
       case "slice_type":
       case "map_type":
         // 对于容器类型，获取其元素类型作为基类型
-        currentNode = currentNode.childForFieldName("element") || currentNode;
+        currentNode = currentNode.childForFieldName("element");
         break;
       case "generic_type":
         // 获取泛型的基本类型
-        currentNode = currentNode.childForFieldName("type") || currentNode;
+        currentNode = currentNode.childForFieldName("type");
         break;
       default:
         return {
@@ -48,6 +48,11 @@ function resolveTypeNode(node: Parser.SyntaxNode): {
         };
     }
   }
+  // 代码可能不完整
+  return {
+    type: "",
+    isPointer: false,
+  };
 }
 
 export default function* findStructMethod(
