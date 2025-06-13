@@ -10,13 +10,13 @@ importers:
     dependencies:
       '@types/vscode':
         specifier: ^1.66.0
-        version: 1.94.0
+        version: 1.96.0
       tree-sitter-go:
         specifier: ^0.23.4
         version: 0.23.4
       web-tree-sitter:
         specifier: ^0.24.6
-        version: 0.24.6
+        version: 0.24.7
     devDependencies:
       '@nates/snapshot':
         specifier: 0.1.1
@@ -360,8 +360,8 @@ packages:
   '@types/semver@7.3.12':
     resolution: {integrity: sha512-WwA1MW0++RfXmCr12xeYOOC5baSC9mSb0ZqCquFzKhcoF4TvHu5MKOuXsncgZcpVFhB1pXd5hZmM0ryAoCp12A==}
 
-  '@types/vscode@1.94.0':
-    resolution: {integrity: sha512-UyQOIUT0pb14XSqJskYnRwD2aG0QrPVefIfrW1djR+/J4KeFQ0i1+hjZoaAmeNf3Z2jleK+R2hv+EboG/m8ruw==}
+  '@types/vscode@1.96.0':
+    resolution: {integrity: sha512-qvZbSZo+K4ZYmmDuaodMbAa67Pl6VDQzLKFka6rq+3WUTY4Kro7Bwoi0CuZLO/wema0ygcmpwow7zZfPJTs5jg==}
 
   '@typescript-eslint/eslint-plugin@5.62.0':
     resolution: {integrity: sha512-TiZzBSJja/LbhNPvk6yc0JrX9XqhQ0hdh6M2svYfsHGejaKFIAGd9MQ+ERIMzLGlN/kZoYIgdxFV0PuljTKXag==}
@@ -2185,8 +2185,8 @@ packages:
   vscode-uri@3.0.8:
     resolution: {integrity: sha512-AyFQ0EVmsOZOlAnxoFOGOq1SQDWAB7C6aqMGS23svWAllfOaxbuFvcT8D1i8z3Gyn8fraVeZNNmN6e9bxxXkKw==}
 
-  web-tree-sitter@0.24.6:
-    resolution: {integrity: sha512-NVG40wwFerkvOSsrY2NE56nKpzwCpn8VT51gqZZaIfkBCMu+0JZLFVwJlZLPO01Ewfq3+Xg+NY4Bot5GD0L03g==}
+  web-tree-sitter@0.24.7:
+    resolution: {integrity: sha512-CdC/TqVFbXqR+C51v38hv6wOPatKEUGxa39scAeFSm98wIhZxAYonhRQPSMmfZ2w7JDI0zQDdzdmgtNk06/krQ==}
 
   which-boxed-primitive@1.0.2:
     resolution: {integrity: sha512-bwZdv0AKLpplFY2KZRX6TvyuN7ojjr7lwkg6ml0roIy9YeuSr7JS372qlNW18UQYzgYK9ziGcerWqZOmEn9VNg==}
@@ -2459,7 +2459,7 @@ snapshots:
 
   '@types/semver@7.3.12': {}
 
-  '@types/vscode@1.94.0': {}
+  '@types/vscode@1.96.0': {}
 
   '@typescript-eslint/eslint-plugin@5.62.0(@typescript-eslint/parser@5.62.0(eslint@8.57.1)(typescript@4.9.5))(eslint@8.57.1)(typescript@4.9.5)':
     dependencies:
@@ -4705,7 +4705,7 @@ snapshots:
 
   vscode-uri@3.0.8: {}
 
-  web-tree-sitter@0.24.6: {}
+  web-tree-sitter@0.24.7: {}
 
   which-boxed-primitive@1.0.2:
     dependencies:
