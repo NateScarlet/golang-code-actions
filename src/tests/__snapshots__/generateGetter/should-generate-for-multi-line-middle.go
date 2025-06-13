@@ -12,10 +12,13 @@ type struct1 struct {
 	}
 }
 
-func (s struct1) F3() struct {
+func (s *struct1) F3() (_ struct {
 		f3a string
 		f3b uint64
-	} {
+	}) {
+	if s == nil {
+		return
+	}
 	return s.f3
 }
 

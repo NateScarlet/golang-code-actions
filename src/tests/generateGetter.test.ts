@@ -153,4 +153,15 @@ suite("generateGetter", () => {
       ext: ".go",
     });
   });
+
+  test("should use same receiver", async () => {
+    const { document, editor } = await useTextDocument(
+      sampleFolder("generate_getter_6.go")
+    );
+    editor.selections = [new vscode.Selection(3, 0, 4, 0)];
+    await generateGetter();
+    await snapshot.match(document.getText(), {
+      ext: ".go",
+    });
+  });
 });

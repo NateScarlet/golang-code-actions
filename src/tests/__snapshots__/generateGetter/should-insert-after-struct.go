@@ -5,7 +5,10 @@ type struct1 struct {
 	f1 string
 }
 
-func (s struct1) F1() string {
+func (s *struct1) F1() (_ string) {
+	if s == nil {
+		return
+	}
 	return s.f1
 }
 // last line content

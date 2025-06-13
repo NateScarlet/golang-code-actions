@@ -12,7 +12,10 @@ type struct1 struct {
 	}
 }
 
-func (s struct1) F1() string {
+func (s *struct1) F1() (_ string) {
+	if s == nil {
+		return
+	}
 	return s.f1
 }
 
@@ -25,6 +28,9 @@ type Struct2 struct {
 	}
 }
 
-func (s Struct2) F1() struct1 {
+func (s *Struct2) F1() (_ struct1) {
+	if s == nil {
+		return
+	}
 	return s.f1
 }
