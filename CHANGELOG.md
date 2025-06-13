@@ -1,6 +1,12 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
+
+## [0.0.17](https://github.com/NateScarlet/golang-code-actions/compare/v0.0.16...v0.0.17) (2025-06-13)
+
+### Features
+
+- auto choose receiver type for getter ([5b7b904](https://github.com/NateScarlet/golang-code-actions/commit/5b7b904ad617992ce1417bc78b801ab4e894728c))
 
 ## [0.0.16](https://github.com/NateScarlet/golang-code-actions/compare/v0.0.15...v0.0.16) (2025-01-14)
 
