@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.0.18](https://github.com/NateScarlet/golang-code-actions/compare/v0.0.17...v0.0.18) (2025-06-13)
+
+### Bug Fixes
+
+- **deps:** update dependency @types/vscode to v1.96.0 ([#279](https://github.com/NateScarlet/golang-code-actions/issues/279)) ([58bc762](https://github.com/NateScarlet/golang-code-actions/commit/58bc762e43a3f8897b53b93e073641dcf509d444))
+- **deps:** update dependency web-tree-sitter to v0.24.7 ([#278](https://github.com/NateScarlet/golang-code-actions/issues/278)) ([f8ca9f5](https://github.com/NateScarlet/golang-code-actions/commit/f8ca9f50ccf430e790bab7319df4f5da6dac06a7))
+- infinite loop in findStructMethod ([c400471](https://github.com/NateScarlet/golang-code-actions/commit/c400471a710bbfcf93f33b9ee6c241062b8ab276))
+
 ## [0.0.17](https://github.com/NateScarlet/golang-code-actions/compare/v0.0.16...v0.0.17) (2025-06-13)
 
 ### Features
