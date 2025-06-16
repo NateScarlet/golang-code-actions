@@ -1,0 +1,14 @@
+[
+  {
+    "isPointerReceiver": false,
+    "name": "F1",
+    "node": {},
+    "receiver": "struct1"
+  },
+  {
+    "isPointerReceiver": true,
+    "name": "F2",
+    "node": {},
+    "receiver": "struct1"
+  }
+]

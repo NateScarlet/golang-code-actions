@@ -24,7 +24,7 @@ function resolveTypeNode(node: Parser.SyntaxNode): {
       case "pointer_type":
         isPointer = true;
         // 移动至指针指向的类型节点
-        currentNode = currentNode.childForFieldName("element");
+        currentNode = currentNode.lastChild;
         break;
       case "parenthesized_type":
         // 进入括号内的类型
