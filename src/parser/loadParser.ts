@@ -25,7 +25,7 @@ async function load() {
         },
       });
       const parser = new Parser();
-      progress.report({ message: "load golang grammer" });
+      progress.report({ message: "load golang grammar" });
       const Go = await Parser.Language.load(
         toFile(extensionUri("out", "tree-sitter-go.wasm"))
       );
