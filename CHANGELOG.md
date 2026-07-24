@@ -1,6 +1,12 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [0.0.20](https://github.com/NateScarlet/golang-code-actions/compare/v0.0.19...v0.0.20) (2026-07-24)
+
+### Features
+
+- **generateOption:** generate With/Without pair for bool fields ([e7fc493](https://github.com/NateScarlet/golang-code-actions/commit/e7fc493422f8c466555d9f29d0d581c79c17c1a5)), closes [#281](https://github.com/NateScarlet/golang-code-actions/issues/281)
 
 ## [0.0.19](https://github.com/NateScarlet/golang-code-actions/compare/v0.0.18...v0.0.19) (2025-06-16)
 

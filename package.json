@@ -2,7 +2,7 @@
   "name": "golang-code-actions",
   "displayName": "Golang Code Actions",
   "description": "extra code actions for golang (generate getter/constructor/option)",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "publisher": "nate-scarlet",
   "engines": {
     "vscode": "^1.66.0"
@@ -51,8 +51,8 @@
     "build-base": "bash ./scripts/build.sh",
     "build": "npm run build-base -- --sourcemap",
     "watch": "npm run build-base -- --sourcemap --watch",
-    "package": "vsce package --no-dependencies",
-    "publish": "vsce publish --no-dependencies"
+    "package": "pnpx @vscode/vsce package --no-dependencies",
+    "publish": "pnpx @vscode/vsce publish --no-dependencies"
   },
   "dependencies": {
     "@types/vscode": "^1.66.0",
