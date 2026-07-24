@@ -62,32 +62,91 @@ type ${optionTypeDecl.name}${
             );
           }
 
-          let argType = field.type;
-          const argIdent = toIdentifier(field.name, ["opts"], true);
-          let argAssign = argIdent;
-          if (argType.startsWith("[]")) {
-            argType = `...${argType.slice(2)}`;
-          } else if (argType.startsWith("*")) {
-            argType = argType.slice(1);
-            argAssign = `&${argAssign}`;
-          }
-          const prefix = optionTypeDecl.name.replace(/Option$/, "With");
-          let funcName = prefix;
+          const argType = field.type;
           const fieldName = toFieldName(field);
-          if (!funcName.includes(upperFirst(fieldName))) {
-            funcName += upperFirst(fieldName).replace(/By$/, "");
-          }
-          const text = `
 
-func ${funcName}${struct.typeParamDecl}(${argIdent} ${argType}) ${
-            optionTypeDecl.name
-          }${toReceiverParameters(struct)} {
+          if (argType === "bool") {
+            let stem = fieldName;
+            let negated = false;
+            if (/^no[A-Z]/.test(fieldName)) {
+              stem = fieldName[2].toLowerCase() + fieldName.slice(3);
+              negated = true;
+            } else if (/^disable[A-Z]/.test(fieldName)) {
+              stem = fieldName[7].toLowerCase() + fieldName.slice(8);
+              negated = true;
+            }
+
+            const withVal = negated ? "false" : "true";
+            const withoutVal = negated ? "true" : "false";
+            const exportedStem = upperFirst(stem).replace(/By$/, "");
+
+            const withPrefix = optionTypeDecl.name.replace(/Option$/, "With");
+            let withName = withPrefix;
+            if (!withName.includes(exportedStem)) {
+              withName += exportedStem;
+            }
+
+            const withoutPrefix = optionTypeDecl.name.replace(
+              /Option$/,
+              "Without"
+            );
+            let withoutName = withoutPrefix;
+            if (!withoutName.includes(exportedStem)) {
+              withoutName += exportedStem;
+            }
+
+            const text = `
+
+func ${withName}${struct.typeParamDecl}() ${
+              optionTypeDecl.name
+            }${toReceiverParameters(struct)} {
+\treturn func(opts *${toStructReceiver(struct)}) {
+\t\topts.${fieldName} = ${withVal}
+\t}
+}
+
+func ${withoutName}${struct.typeParamDecl}() ${
+              optionTypeDecl.name
+            }${toReceiverParameters(struct)} {
+\treturn func(opts *${toStructReceiver(struct)}) {
+\t\topts.${fieldName} = ${withoutVal}
+\t}
+}`;
+            const location = document.positionAt(optionTypeDecl.node.endIndex);
+            yield new vscode.TextEdit(
+              new vscode.Range(location, location),
+              text
+            );
+          } else {
+            const argIdent = toIdentifier(field.name, ["opts"], true);
+            let resolvedArgType = argType;
+            let argAssign = argIdent;
+            if (resolvedArgType.startsWith("[]")) {
+              resolvedArgType = `...${resolvedArgType.slice(2)}`;
+            } else if (resolvedArgType.startsWith("*")) {
+              resolvedArgType = resolvedArgType.slice(1);
+              argAssign = `&${argAssign}`;
+            }
+            const prefix = optionTypeDecl.name.replace(/Option$/, "With");
+            let funcName = prefix;
+            if (!funcName.includes(upperFirst(fieldName))) {
+              funcName += upperFirst(fieldName).replace(/By$/, "");
+            }
+            const text = `
+
+func ${funcName}${struct.typeParamDecl}(${argIdent} ${resolvedArgType}) ${
+              optionTypeDecl.name
+            }${toReceiverParameters(struct)} {
 \treturn func(opts *${toStructReceiver(struct)}) {
 \t\topts.${fieldName} = ${argAssign}
 \t}
 }`;
-          const location = document.positionAt(optionTypeDecl.node.endIndex);
-          yield new vscode.TextEdit(new vscode.Range(location, location), text);
+            const location = document.positionAt(optionTypeDecl.node.endIndex);
+            yield new vscode.TextEdit(
+              new vscode.Range(location, location),
+              text
+            );
+          }
         }
       }
     })()

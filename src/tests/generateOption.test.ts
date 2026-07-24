@@ -196,4 +196,62 @@ suite("generateOption", () => {
       ext: ".go",
     });
   });
+
+  test("should generate With and Without for bool field", async () => {
+    const { document, editor } = await useTextDocument(
+      sampleFolder("generate_option_10.go")
+    );
+    editor.selection = new vscode.Selection(3, 0, 3, 0);
+    await generateOption();
+    await snapshot.match(document.getText(), {
+      ext: ".go",
+    });
+  });
+
+  test("should generate With and Without for negated no prefix bool field", async () => {
+    const { document, editor } = await useTextDocument(
+      sampleFolder("generate_option_10.go")
+    );
+    editor.selection = new vscode.Selection(4, 0, 4, 0);
+    await generateOption();
+    await snapshot.match(document.getText(), {
+      ext: ".go",
+    });
+  });
+
+  test("should generate With and Without for negated disable prefix bool field", async () => {
+    const { document, editor } = await useTextDocument(
+      sampleFolder("generate_option_10.go")
+    );
+    editor.selection = new vscode.Selection(5, 0, 5, 0);
+    await generateOption();
+    await snapshot.match(document.getText(), {
+      ext: ".go",
+    });
+  });
+
+  test("should generate With and Without for inline bool fields", async () => {
+    const { document, editor } = await useTextDocument(
+      sampleFolder("generate_option_11.go")
+    );
+    editor.selections = [
+      new vscode.Selection(3, 0, 3, 0),
+      new vscode.Selection(3, 4, 3, 4),
+    ];
+    await generateOption();
+    await snapshot.match(document.getText(), {
+      ext: ".go",
+    });
+  });
+
+  test("should generate With and Without for bool field with embed field", async () => {
+    const { document, editor } = await useTextDocument(
+      sampleFolder("embed_fields_bool.go")
+    );
+    editor.selection = new vscode.Selection(6, 0, 6, 0);
+    await generateOption();
+    await snapshot.match(document.getText(), {
+      ext: ".go",
+    });
+  });
 });
