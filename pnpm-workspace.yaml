@@ -1,0 +1,5 @@
+allowBuilds:
+  '@playwright/browser-chromium': true
+  core-js-pure: true
+  esbuild: true
+  tree-sitter-go: true
